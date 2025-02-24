@@ -1,0 +1,424 @@
+\subsection{The Product Toplogy}
+
+\begin{exercise}[ID=2.19.1]
+    Suppose the topology on each space $X_\alpha$ is given by a basis $\mathscr{B}_\alpha$.
+    Show that the collection of all sets of the form
+    $$\prod_{\alpha \in J} B_\alpha,$$
+    where $B_\alpha \in \mathscr{B}_\alpha$ for each $\alpha$, will serve as a basis for the box topology on $\prod_{\alpha \in J} X_\alpha$.
+
+    Furthermore, show that the collection of all sets of the same form, where $B_\alpha \in \mathscr{B}_\alpha$ for finitely many indices $\alpha$ and $B_\alpha = X_\alpha$ for all the remaining indices, will serve as a basis for the product topology on $\prod_{\alpha \in J} X_\alpha$.
+\end{exercise}
+
+\begin{solution}
+    \begin{proof}
+        We first demonstrate that the collection of such products of basis elements in either case is a basis for \textit{some} topology on $\prod X_\alpha$.
+        Let $x = (x_\alpha) \in \prod X_\alpha$.
+        For all $\alpha \in J$, $\mathscr{B}_\alpha$ forms a basis for the topology on $X_\alpha$ and so there exists a basis element $B_\alpha \in \mathscr{B}_\alpha$ containing $x_\alpha$.
+        Since this holds true for all $\alpha$, the product of basis elements $\prod B_\alpha$, thus, contains $x$.
+        If we require that only a finite number of $B_\alpha$ are not equal to $X_\alpha$, the product remains well-defined and obviously still contains $x$.
+
+        Now suppose there are two such products $\prod B_\alpha$ and $\prod B'_\alpha$ containing $x$.
+        Then $x \in \prod B_\alpha \cap B'_\alpha \implies$ for all $\alpha \in J$, $x_\alpha \in B_\alpha \cap B'_\alpha$.
+        Since $\mathscr{B}_\alpha$ is a basis for the topology on $X_\alpha$, there exists another element $B''_\alpha \in \mathscr{B}_\alpha$ such that $x_\alpha \in B''_\alpha \subset B_\alpha \cap B'_\alpha$ and so $x \in \prod B''_\alpha$.
+        Let $y = (y_\alpha) \in \prod B''_\alpha$.
+        Then for all $\alpha \in J$, $y_\alpha \in B''_\alpha \implies y_\alpha \in B_\alpha \cap B'_\alpha \implies y \in \prod B_\alpha \cap B'_\alpha \implies \prod B''_\alpha \subset \prod B_\alpha \cap B'_\alpha$.
+        If only a finite number of $B_\alpha$ and $B'_\alpha$ are not equal to $X_\alpha$, then we may also choose a finite number of $B''_\alpha \neq X_\alpha$.
+        Thus, such products are seen to form a basis generating a topology on $\prod X_\alpha$.
+
+        Given a set $V \subset \prod X_\alpha$ which is open under the box topology and a point $x = (x_\alpha) \in V$, by definition of the box topology given in Chapter 2.19 there is a basis element $\prod U_\alpha \subset V$ containing $x$, where $U_\alpha$ is open in $X_\alpha$ for all $\alpha \in J$.
+        Because $\mathscr{B}_\alpha$ is a basis for $X_\alpha$ for all $\alpha \in J$, we can choose basis elements $B_\alpha \in \mathscr{B}_\alpha$ such that $x_\alpha \in B_\alpha \subset U_\alpha$ for each $\alpha$.
+        Then $x \in \prod B_\alpha \subset \prod U_\alpha \subset V$.
+        Thus, by Lemma 2.13.2, the collection of all such products $\prod B_\alpha$ is a basis for the box topology on $\prod X_\alpha$.
+
+        Given now a set $W \subset \prod X_\alpha$ which is open under the product topology and a point $x = (x_\alpha) \in W$, by definition of the product topology given in Chapter 2.19 there is a basis element $\prod U_\alpha \subset W$ containing $x$, where $U_\alpha$ is open in $X_\alpha$ for all $\alpha \in J$ and $U_\alpha = X_\alpha$ except for finitely many values of $\alpha$.
+        Let $J'$ denote the finite collection of indices $\alpha$ such that $U_\alpha \neq X_\alpha$.
+        Because $\mathscr{B}_\alpha$ is a basis for $X_\alpha$ for all $\alpha \in J$, we can choose basis elements $B_\alpha \in \mathscr{B}_\alpha$ such that $x_\alpha \in B_\alpha \subset U_\alpha$ for all $\alpha \in J'$ and choose $B_\alpha = X_\alpha$ for the remaining $\alpha \in J \setminus J'$, clearly also satisfying $x_\alpha \in B_\alpha \subset U_\alpha$ since in this case $B_\alpha = U_\alpha = X_\alpha$.
+        Then $x \in \prod B_\alpha \subset \prod U_\alpha \subset W$.
+        Thus, by Lemma 2.13.2, the collection of all such products $\prod B_\alpha$, where $B_\alpha \neq X_\alpha$ only for a finite number of indices $\alpha \in J$, is a basis for the product topology on $\prod X_\alpha$.
+    \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.19.2]
+    Let $A_\alpha$ be a subspace of $X_\alpha$ for each $\alpha \in J$.
+    Show that $\prod A_\alpha$ is a subspace of $\prod X_\alpha$ if both products are given the box topology, or if both products are given the product topology.
+\end{exercise}
+
+\begin{solution}
+    \begin{proof}
+        Let $\prod X_\alpha$ be equipped with the box topology and let $B = \prod B_\alpha$ be a basic open set in $\prod X_\alpha$, where $B_\alpha$ is a basic open set in $X_\alpha$ for all $\alpha \in J$.
+        As $A_\alpha$ is a subspace of $X_\alpha$ for all $\alpha \in J$, by Lemma 2.16.1. the set $C_\alpha \coloneq B_\alpha \cap A_\alpha$ is a basic open set in the subspace topology on $A_\alpha$.
+        If we equip $\prod A_\alpha$ with the box topology, we may write its basic open sets as $C \coloneq \prod C_\alpha = \prod B_\alpha \cap A_\alpha = B \cap \prod A_\alpha$.
+        By Lemma 2.16.1, these are precisely the basic open sets of $\prod A_\alpha$ as a subspace of $\prod X_\alpha$.
+
+        Now let $\prod X_\alpha$ be equipped with the product topology and let $B = \prod U_\alpha$ be a basic open set in $\prod X_\alpha$, where $U_\alpha = B_\alpha$ is a basic open set in $X_\alpha$ for all $\alpha \in J'$, where $J'$ is a finite subset of $J$, and $U_\alpha = X_\alpha$ for all $\alpha \in J \setminus J'$.
+        As $A_\alpha$ is a subspace of $X_\alpha$ for all $\alpha \in J$, by Lemma 2.16.1 we have for all $\alpha \in J'$ the set $C_\alpha \coloneq U_\alpha \cap A_\alpha = B_\alpha  \cap A_\alpha$ is a basic open set in the subspace topology on $A_\alpha$, whereas for all $\alpha \in J \setminus J'$ the set $C_\alpha \coloneq U_\alpha \cap A_\alpha = X_\alpha \cap A_\alpha = A_\alpha$ is trivially open in $A_\alpha$.
+        If we equip $\prod A_\alpha$ with the product topology, we may write its basic open sets as $C \coloneq \prod C_\alpha = \prod U_\alpha \cap A_\alpha = B \cap \prod A_\alpha$.
+        By Lemma 2.16.1, these are precisely the basic open sets of $\prod A_\alpha$ as a subspace of $\prod X_\alpha$.
+    \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.19.3]
+    Show that if each space $X_\alpha$ is a Hausdorff space, then $\prod X_\alpha$ is a Hausdorff space in both the box and the product topologies.
+\end{exercise}
+
+\begin{solution}
+    \begin{proof}
+        Let $x, y \in \prod X_\alpha$ with $x \neq y$.
+        Then we may fix some $\alpha' \in J$ such that $x_{\alpha'} \neq y_{\alpha'}$.
+        For all $\alpha \neq \alpha'$, define open sets $U_\alpha = V_\alpha = X_\alpha$.
+        By hypothesis, we can choose disjoint open sets $U_{\alpha'}, V_{\alpha'} \subset X_{\alpha'}$ containing $x_{\alpha'}$ and $y_{\alpha'}$, respectively.
+        Then we have $x \in U \coloneq \prod U_\alpha$ and $y \in V \coloneq \prod V_\alpha$ with $U \cap V = \left(\prod_\alpha U_\alpha\right) \cap \left(\prod_\alpha V_\alpha\right) = \prod U_\alpha \cap V_\alpha = \emptyset$, since $U_{\alpha'} \cap V_{\alpha'} = \emptyset$.
+        As $U_\alpha$ and $V_\alpha$ are both equal to $X_\alpha$ except for the case $\alpha = \alpha'$, the sets $U$ and $V$ are open in $\prod X_\alpha$ in both the box topology and the product topology.
+        Thus, $\prod X_\alpha$ is a Hausdorff space in either topology.
+    \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.19.4]
+    {\bf Claim.} $(X_1 \times \ldots \times X_{n-1}) \times X_n$ is homeomorphic with $X_1 \times \ldots \times X_n$.
+\end{exercise}
+
+\begin{solution}
+    \begin{proof}
+        Define a function
+        \begin{align*}
+            f: (X_1 \times \ldots \times X_{n-1}) \times X_n & \rightarrow X_1 \times \ldots \times X_n \\
+            ((x_1, \ldots, x_{n-1}), x_n)                    & \mapsto (x_1, \ldots, x_n).
+        \end{align*}
+        We have already proved in Exercise 1.5.2 that $f$ is a bijection, thus it remains only to be shown that $f$ and $f^{-1}$ are continuous.
+
+        Let $U \coloneq U_1 \times \ldots \times U_n$ be a basic open set in $X_1 \times \ldots \times X_n$, where $U_i$ is open in $X_i$ for all $i \in \{1, \ldots, n\}$.
+        The preimage set of $U$ is given by $f^{-1}(U) = (U_1 \times \ldots \times U_{n-1}) \times U_n$, which is a basic open set in $(X_1 \times \ldots \times X_{n-1}) \times X_n$.
+        Thus, $f$ is continuous.
+
+        Similarly, given a basic open set $V \coloneq (V_1 \times \ldots \times V_{n-1}) \times V_n$ in $(X_1 \times \ldots X_{n-1}) \times X_n$, where $V_i$ is open in $X_i$ for all $i \in \{1, \ldots, n\}$, its image set is given by $f(V) = V_1 \times \ldots \times V_n$, which is a basic open set in $X_1 \times \ldots \times X_n$.
+        Thus, $f^{-1}$ is also continuous.
+        Therefore, $(X_1 \times \ldots \times X_{n-1}) \times X_n$ is homeomorphic with $X_1 \times \ldots \times X_n$.
+    \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.19.6]
+    Let $\bx_1, \bx_2, \ldots$ be a sequence of points of the product space $\prod_{\alpha \in J} X_\alpha$.
+    Show that this sequence converges to the point $\bx$ if and only if the sequence $\pi_\alpha(\bx_1), \pi_\alpha(\bx_2), \ldots$ converges to $\pi_\alpha(\bx)$ for each $\alpha$.
+    Is this fact true if one uses the box topology instead of the product topology?
+\end{exercise}
+
+\begin{solution}
+    \begin{proof}
+        Assume that the sequence $\bx_1, \bx_2, \ldots$ converges to $\bx$.
+        We will show that the sequence $\pi_\alpha(\bx_1),$\newline
+        $\pi_\alpha(\bx_2), \ldots$ converges to $\pi_\alpha(\bx)$ for all $\alpha \in J$.
+        Fix $\alpha \in J$ and let $U_\alpha$ be an open neighborhood of $\pi_\alpha(\bx)$.
+        By definition of the product topology, $\pi_\alpha\inv(U_\alpha)$ is an open set in $\prod_\alpha X_\alpha$ and, since $\pi_\alpha(\bx) \in U_\alpha$, it is a neighborhood of $\bx$.
+        Then $\exists N \in \ZZ_+$ such that $\bx_n \in \pi_\alpha\inv(U_\alpha)$, for all $n \geq N$.
+        Thus, $\forall n \geq N$, $\pi_\alpha(\bx_n) \in U_\alpha$ and so the sequence $\pi_\alpha(\bx_1), \pi_\alpha(\bx_2), \ldots$ converges to $\pi_\alpha(\bx)$.
+        Since $\alpha$ was chosen arbitrarily, this holds for all $\alpha \in J$.
+
+        Conversely, assume that the sequence $\pi_\alpha(\bx_1), \pi_\alpha(\bx_2), \ldots$ converges to $\pi_\alpha(\bx)$, for all $\alpha \in J$.
+        We will show that the sequence $\bx_1, \bx_2, \ldots$ converges to $\bx$.
+        Let $U = \prod_\alpha U_\alpha$ be a basic open set containing $\bx$, where $U_\alpha$ is open in $X_\alpha$ for all $\alpha \in J$ and $U_\alpha \neq X_\alpha$ only for finitely many values of $\alpha$.
+        Then $\forall \alpha \in J$, $\pi_\alpha(\bx) \in U_\alpha$, which implies that $\forall \alpha \in J,~ \exists N_\alpha \in \ZZ_+$ such that $\pi_\alpha(\bx_n) \in U_\alpha$ for all $n \geq N_\alpha$.
+        Note that we may choose $N_\alpha = 1$ for all but the finitely many values of $\alpha$ for which $U_\alpha \neq X_\alpha$ and may, thus, define $N = \max\{N_\alpha\}_{\alpha \in J}$.
+        Then $\pi_\alpha(\bx_n) \in U_\alpha,~ \forall n \geq N$ and for all $\alpha \in J$, implying that $\bx_n \in U,~ \forall n \geq N$.
+        Thus, the sequence $\bx_1, \bx_2, \ldots$ converges to $\bx$.
+    \end{proof}
+
+    Note that the proof of the reverse implication relies on the fact that we must only choose a finite number of nontrivial $N_\alpha$.
+    As this is not possible for an arbitrary open set in the box topology, the implication does not hold when choosing the box topology on $\prod_\alpha X_\alpha$.
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.19.7]
+    Let $\mathbb{R}^\infty$ be the subset of $\mathbb{R}^\omega$ consisting of all sequences that are "eventually zero", that is, all sequences $(x_1, x_2, \ldots)$ such that $x_i \neq 0$ for only finitely many values of $i$.
+    What is the closure of $\mathbb{R}^\infty$ in $\mathbb{R}^\omega$ in the box and product topologies?
+\end{exercise}
+
+\begin{solution}
+    {\bf Claim.}  $\overline{\mathbb{R}^\infty} = \mathbb{R}^\infty$ in $\mathbb{R}^\omega$ equipped with the box topology.
+    %
+    \begin{proof}
+        Let $\by = (b_i)$ be a sequence in $R^\omega$ (with the box topology) that is not eventually zero.
+        Then there exists an infinite set of indices $J \subset \ZZ_+$ for which $y_i \neq 0$.
+        For each such index $i \in J$, by the Hausdorff property of $\RR$ we can choose an open interval $U_i$ containing $y_i$ that does not contain $0$.
+        For indices $i \notin J$, let $U_i = R$.
+        Then the basic open set $U = \prod_{i\in\ZZ_+} U_i$ is a neighborhood of $\by$.
+        But if $\bx = (x_i) \in \RR^\infty$ (so that $x_i = 0$ for all but finitely many $i$), then for all sufficiently large $i \in J$, we have $x_i = 0$ which does not lie in $U_i$ by construction.
+        Hence $U \cap \RR^\infty = \emptyset$.
+        It follows that any point in the closure of $\RR^\infty$ must be eventually zero.
+        Since $R^\infty$ is obviously contained in its closure, we conclude that $\overline{\RR^\infty} = \RR^\infty$.
+    \end{proof}
+    \bigskip
+
+    \noindent{\bf Claim.}  $\overline{\mathbb{R}^\infty} = \mathbb{R}^\omega$ in $\mathbb{R}^\omega$ equipped with the product topology.
+    %
+    \begin{proof}
+        Let $\mathbf{y} \in \mathbb{R}^\omega$ and let $U = \prod_{i\in\mathbb{Z}_+} U_i$ be a basic open neighborhood of $\mathbf{y}$ in the product topology, where $U_i$ are open sets in $\mathbb{R}$ containing $y_i$ for all $i \in \mathbb{Z}_+$.
+        By definition of the product topology, there exists $N \in \mathbb{Z}_+$ such that for all $i \geq N,~ U_i = \mathbb{R}$.
+        Now define a sequence $\mathbf{x} = (x_i)$ by
+        %
+        \begin{equation*}
+            x_i = \begin{cases}
+                y_i & \text{if } i < N, \\
+                0   & \text{if } i \geq N.
+            \end{cases}
+        \end{equation*}
+        %
+        By construction, we have that $\mathbf{x} \in \mathbb{R}^\infty$.
+        Also, for $i < N$ we have $x_i = y_i \in U_i$ and for $i \geq N$ we have $x_i = 0 \in U_i = \RR$.
+        Thus, $\bx \in U$.
+        Since $U$ was an arbitrary basic open neighborhood of $\by$, we conclude that every such neighborhood intersects $\RR^\infty$.
+        Therefore, $\by$ is in the closure of $\RR^\infty$.
+        As $\by$ was arbitrary, it follows that $\overline{\RR^\infty} = \RR^\omega$.
+    \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.19.8]
+    Given sequences $(a_1, a_2, \ldots)$ and $(b_1, b_2, \ldots)$ of real numbers with $a_i > 0$ for all $i$, define $h: \RR^\omega \rightarrow \RR^\omega$ by the equation
+    %
+    \begin{equation*}
+        h((x_1, x_2, \ldots)) = (a_1 x_1 + b_1, a_2 x_2 + b_2, \ldots).
+    \end{equation*}
+    %
+    Show that if $\RR^\omega$ is given the product topology, $h$ is a homeomorphism of $\RR^\omega$ with itself.
+\end{exercise}
+
+\begin{solution}
+    {\bf Claim.} If $\RR^\omega$ is given the product topology, $h$ is a homeomorphism of $\RR^\omega$ with itself.
+    %
+    \begin{proof}
+        We start by showing that $h$ is a bijection.
+        Let $\{\pi_i\}_{i\in\ZZ_+}$ denote the set of projection mappings from $\RR^\omega$ onto its $i$th factor and let $\bx, \by \in \RR^\omega$ satisfying $h(\bx) = h(\by)$.
+        Then $h(\bx) = h(\by) \implies \forall i \in \ZZ_+,~ \pi_i(h(\bx)) = \pi_i(h(\by)) \implies a_i x_i + b_i = a_i y_i + b_i \implies x_i = y_i$.
+        Since $x_i = y_i$ for all $i \in \ZZ_+$, we have $\bx = \by$.
+        Thus, $h(\bx) = h(\by) \implies  \bx = \by$ and so $h$ is an injection.
+
+        Let $\by \in \RR^\omega$.
+        Since $\forall i \in \ZZ_+,~ a_i > 0,~ \exists \bx \in \RR^\omega$ with $x_i = (y_i - b_i) / a_i~, \forall i \in \ZZ_+$.
+        Then $\forall i \in \ZZ_+$,
+        %
+        \begin{align*}
+            \pi_i(h(\bx))   &= a_i x_i + b_i \\
+                            &= a_i (y_i - b_i) / a_i + b_i \\
+                            &= y_i,
+        \end{align*}
+        %
+        and so $h(\bx) = \by$.
+        Since $\by$ was arbitrary, we have that $\forall \by \in \RR^\omega, \exists \bx \in \RR^\omega$ such that $h(\bx) = \by$.
+        Thus, $h$ is also a surjection, establishing it as a bijection of $\RR^\omega$ with itself.
+        As a bijection, $h$ must have an inverse which we see from above must be defined as
+        %
+        \begin{equation*}
+            h\inv(\by) = \left((y_1 - b_1) / a_1, (y_2 - b_2) / a_2, \ldots\right).
+        \end{equation*}
+        %
+
+        We will now show that $h$ is continuous.
+        Let $(\alpha, \beta)$ be an open interval in $\RR$ and let $S = \pi_i\inv\left((\alpha, \beta)\right)$ be a subbasis element for the product topology on $\RR^\omega$ for some fixed $i \in \ZZ_+$.
+        Then the preimage of $S$ under $h$ is given by
+        %
+        \begin{align*}
+            h\inv(S)    &= \{\bx \in \RR^\omega \mid h(\bx) \in S\} \\
+                        &= \{\bx \in \RR^\omega \mid a_i x_i + b_i \in (\alpha, \beta)\} \\
+                        &= \{\bx \in \RR^\omega \mid x_i \in \left((\alpha - b_i) / a_i, (\beta - b_i) / a_i\right)\} \\
+                        &= \pi_i\inv\left((\alpha - b_i) / a_i, (\beta - b_i) / a_i\right).
+        \end{align*}
+        %
+        Since $a_i > 0$, $\left((\alpha - b_i) / a_i, (\beta - b_i) / a_i\right)$ is a well-defined open interval in $\RR$, making $h\inv(S)$ another subbasis element for the product topology on $\RR^\omega$ and, thus, open.
+        As $\alpha, \beta \in \RR$ and $i \in \ZZ_+$ are arbitrary, we have that the preimage of any subbasis element under $h$ is open.
+        Since any basis element $B$ can be written as a finite intersection of such subbasis elements as $B = \bigcap_{i \in J} S_i$, where $J$ is some finite indexing set, we have
+        %
+        \begin{align*}
+            h\inv(B)    &= h\inv\left(\bigcap_{i \in J} S_i\right) \\
+                        &= \bigcap_{i \in J} h\inv(S_i).
+        \end{align*}
+        %
+        Since $J$ is finite and $\forall i \in J,~ h\inv(S_i)$ is open, $h\inv(B)$ is open as a finite product of open sets.
+        Thus, as $B$ is an arbitrary basis element for the product topology on $\RR^\omega$, we have that $h$ is continuous.
+
+        To show that $h\inv$ is continuous, it suffices to show that for every subbasic open set $S = \pi_i\inv\left((\alpha, \beta)\right)$ in $\RR^\omega$, the set
+        %
+        \begin{equation*}
+            (h\inv)\inv(S) = h(S)
+        \end{equation*}
+        %
+        is open.
+        We see from explicit calculation that
+        %
+        \begin{align*}
+            h(S)    &= \{h(\bx) \mid \bx \in S\} \\
+                    &= \{(a_1 x_1 + b_1, a_2 x_2 + b_2, \ldots) \mid \forall j \in \ZZ_+,~ x_j \in \RR,~ x_i \in (\alpha, \beta)\} \\
+                    &= \{\by \in \RR^\omega \mid  (y_i - b_i) / a_i \in (\alpha, \beta)\} \\
+                    &= \{\by \in \RR^\omega \mid y_i \in \left(a_i \alpha + b_i, a_i \beta + b_i\right)\} \\
+                    &= \pi_i\inv\left((a_i \alpha + b_i, a_i \beta + b_i)\right),
+        \end{align*}
+        %
+        which is another subbasis element for the product topology on $\RR^\omega$ and, therefore, open.
+        Thus, we see that $h\inv$ is also continuous and so $h$ furnishes a homeomorphism between $\RR^\omega$ and itself.
+    \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.19.10]
+    Let $A$ be a set; let $\{X_\alpha\}_{\alpha \in J}$ be an indexed family of spaces; and let $\{f_\alpha\}_{\alpha \in J}$ be an indexed family of functions $f_\alpha: A \rightarrow X_\alpha$.
+
+    \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+        \item Show there is a unique coarsest topology $\mathcal{T}$ on $A$ relative to which each of the functions $f_\alpha$ is continuous.
+        \item Let
+        %
+        \begin{equation*}
+            \mathcal{S}_\beta = \left\{f_\beta\inv(U_\beta) \mid U_\beta \text{ is open in } X_\beta\right\},
+        \end{equation*}
+        %
+        and let $\mathcal{S} = \bigcup S_\beta$.
+        Show that $\mathcal{S}$ is a subbasis for $\mathcal{T}$.
+        \item Show that a map $g: Y \rightarrow A$ is continuous relative to $\mathcal{T}$ if and only if each map $f_\alpha \circ g$ is continuous.
+        \item Let $f: A \rightarrow \prod X_\alpha$ be defined by the equation
+        %
+        \begin{equation*}
+            f(a) = (f_\alpha(a))_{\alpha \in J}
+        \end{equation*}
+        %
+        and let $Z$ denote the subspace $f(A)$ of the product space $\prod X_\alpha$.
+        Show that the image under $f$ of each element of $\mathcal{T}$ is an open set in $Z$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+        \item Show there is a unique coarsest topology $\mathcal{T}$ on $A$ relative to which each of the functions $f_\alpha$ is continuous.
+    \end{enumerate}
+    %
+    \begin{proof}
+        Let $\mathcal{F} = \{\mathcal{T}' \mid \mathcal{T}'$ is a topology on $A$ and for each $\alpha \in J,~ f_\alpha: (A, \mathcal{T}') \rightarrow X_\alpha$ is continuous$\}$.
+        Since, for example, the discrete topology on $A$ makes every function continuous, $\mathcal{F} \neq \emptyset$.
+        Define
+        %
+        \begin{equation*}
+            \mathcal{T} \coloneq \bigcap_{\mathcal{T}' \in \mathcal{F}} \mathcal{T}'.
+        \end{equation*}
+        %
+        We claim that $\mathcal{T}$ is a topology on $A$ and is the unique coarsest topology relative to which every $f_\alpha$ is continuous.
+
+        We first show that $\mathcal{T}$ is a topology on $A$.
+        Since every $\mathcal{T}' \in \mathcal{F}$ is a topology, it must contain both $\emptyset$ and $A$, thus $\mathcal{T}$ must also contain both $\emptyset$ and $A$.
+        Let $\{U_i\}_{i \in I}$ be an indexed family of sets, each of which is contained in $\mathcal{T}$.
+        Since, by definition of $\mathcal{T}$, each $\mathcal{T}'$ also contains each set $U_i$, it also contains $\bigcup_{i \in I} U_i$.
+        As this holds for each topology in $\mathcal{F}$, we have that $\bigcup_{i \in I} U_i \in \mathcal{T}$.
+        By an analogous argument, if the index set $I$ is finite, then we have that each topology in $\mathcal{F}$ also contains the intersection of all $U_i$ so that $\bigcap_{i \in I} U_i \in \mathcal{T}$.
+        Thus, we have shown that $\mathcal{T}$ is a topology on $A$.
+
+        Next, we show that for each index $\alpha \in J$, $f_\alpha: (A, \mathcal{T}) \rightarrow X_\alpha$ is continuous.
+        Let $U_\alpha$ be some open set in $X_\alpha$ and let $\mathcal{T}' \in \mathcal{F}$.
+        By definition of $\mathcal{F},~ f_\alpha: (A, \mathcal{T}') \rightarrow X_\alpha$ is continuous and so we have that $f_\alpha\inv(U_\alpha) \in \mathcal{T}'$.
+        As this must be true for any $\mathcal{T}' \in \mathcal{F}$, we have that $f_\alpha\inv(U_\alpha) \in \mathcal{T}$.
+        Since the set $U_\alpha$ is arbitrary, we have that $f_\alpha$ is continuous with respect to the topology $\mathcal{T}$.
+
+        Finally, we show that $\mathcal{T}$ is the coarsest such topology and is unique.
+        Let $\mathcal{T}''$ be another topology on $A$ relative to which $f_\alpha$ is continuous for all $\alpha \in J$.
+        Then, by definition, $\mathcal{T}'' \in \mathcal{F}$ and so $\mathcal{T} \subset \mathcal{T}''$, that is, $\mathcal{T}$ is coarser than $\mathcal{T}''$.
+        Furthermore, the construction of $\mathcal{T}$ by intersection guarantees its uniqueness.
+
+        Thus, there is a unique coarsest topology on $A$ relative to which $f_\alpha$ is continuous for all $\alpha \in J$. 
+    \end{proof}
+    \bigskip
+
+    \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+        \addtocounter{enumi}{1} 
+        \item Let
+        %
+        \begin{equation*}
+            \mathcal{S}_\beta = \left\{f_\beta\inv(U_\beta) \mid U_\beta \text{ is open in } X_\beta\right\},
+        \end{equation*}
+        %
+        and let $\mathcal{S} = \bigcup S_\beta$.
+        Show that $\mathcal{S}$ is a subbasis for $\mathcal{T}$.
+    \end{enumerate}
+    %
+    \begin{proof}
+        In order for $\mathcal{S}$ to be a subbasis for $\mathcal{T}$, it must be that (1) the union of all sets contained in $\mathcal{S}$ must be equal to $A$, and (2) the topology $\mathcal{T}_\mathcal{S}$ which $\mathcal{S}$ generates, given by the collection of all unions of finite intersections of elements of $\mathcal{S}$, must be equal to $\mathcal{T}$.
+
+        Since every function $f_\beta$ satisfies $f_\beta\inv(X_\beta) = A$, we see that $A \in S_\beta$ for each $\beta \in J$.
+        Thus, the union of all elements of $\mathcal{S}$ must also equal $A$.
+    
+        Let $V \in \mathcal{S}$.
+        By definition, for some $\beta \in J$, there is an open set $U_\beta \subset X_\beta$ such that $V = f_\beta\inv(U_\beta)$.
+        Since $\mathcal{T}$ is a topology with respect to which $f_\beta$ is continuous, we have that $f_\beta\inv(U_\beta) \in \mathcal{T}$, and so $\mathcal{S} \subset \mathcal{T}$.
+        The definition of a topology guarantees, therefore, that $\mathcal{T}_{\mathcal{S}} \subset \mathcal{T}$, that is, $\mathcal{T}_\mathcal{S}$ is coarser than $\mathcal{T}$.
+    
+        As $\mathcal{S}$ contains the preimage of all open subsets of $X_\beta$ under $f_\beta$ for all $\beta \in J$, we have that each of the functions $f_\beta$ are continuous with respect to $\mathcal{T}_\mathcal{S}$.
+        Since we proved in (a) that $\mathcal{T}$ is the coarsest such topology, we have that $\mathcal{T} \subset \mathcal{T}_\mathcal{S}$.
+        Thus, $\mathcal{T}$ is precisely the topology generated by $\mathcal{S}$.
+    \end{proof}
+    \bigskip
+
+    \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+        \addtocounter{enumi}{2} 
+        \item Show that a map $g: Y \rightarrow A$ is continuous relative to $\mathcal{T}$ if and only if each map $f_\alpha \circ g$ is continuous.
+    \end{enumerate}
+    %
+    \begin{proof}
+        Assume first that $g: Y \rightarrow A$ is continuous.
+        Since each  $f_\alpha: A \rightarrow X_\alpha$ is continuous by hypothesis and the composition of two continuous maps is continuous (by Theorem 2.18.2), it immediately follows that $f_\alpha \circ g$ is continuous for every $\alpha \in J$.
+
+        Conversely, assume that for every $\alpha \in J$, the composition $f_\alpha \circ g$ is continuous.
+        Let $U_\alpha$ be any open subset of $X_\alpha$.
+        Then, by the definition of continuity,
+        %
+        \begin{equation*}
+            (f_\alpha \circ g)\inv(U_\alpha) = g\inv(f_\alpha\inv(U_\alpha))
+        \end{equation*}
+        %
+        is open in $Y$.
+        Since the collection of sets
+        %
+        \begin{equation*}
+            \{f_\alpha\inv(U_\alpha) \mid \alpha \in J \text{ and } U_\alpha \text{ is open in } X_\alpha\}
+        \end{equation*}
+        forms a subbasis for the topology $\mathcal{T}$ on $A$, the fact that $g\inv(f_\alpha\inv(U_\alpha))$ is open in Y for every such set implies that $g$ is continuous.
+
+        Thus, $g: Y \rightarrow A$ is continuous if and only if each map $f_\alpha \circ g: Y \rightarrow X_\alpha$ is continuous.
+    \end{proof}
+    \bigskip
+
+    \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+        \addtocounter{enumi}{3} 
+        \item Let $f: A \rightarrow \prod X_\alpha$ be defined by the equation
+        %
+        \begin{equation*}
+            f(a) = (f_\alpha(a))_{\alpha \in J}
+        \end{equation*}
+        %
+        and let $Z$ denote the subspace $f(A)$ of the product space $\prod X_\alpha$.
+        Show that the image under $f$ of each element of $\mathcal{T}$ is an open set in $Z$.
+    \end{enumerate}
+    %
+    \begin{proof}
+        Let $U$ be a basic open set of $\prod X_\alpha$ so that its preimage under $f$, $f\inv(U)$, is a basic open set of $A$ with respect to the topology $\mathcal{T}$.
+        The image of $f\inv(U)$ under $f$ is given by
+        %
+        \begin{align*}
+            f(f\inv(U)) &= \{f(a) \mid a \in f\inv(U)\} \\
+                        &= \{f(a) \mid a \in A \text{ and } f(a) \in U\} \\
+                        &= \{x \in \prod X_\alpha \mid x \in f(A) \text{ and } x \in U\} \\
+                        &= f(A) \cap U,
+        \end{align*}
+        %
+        which, by definition of the subspace topology, is open in $Z$.
+
+        Let $V$ be an arbitrary open set in $A$.
+        Since $V$ can be expressed as a union of basic open sets $V = \bigcup_\alpha B_\alpha$, we have that its image under $f$,
+        %
+        \begin{align*}
+            f(V)    &= f(\bigcup_\alpha B_\alpha) \\
+                    &= \bigcup_\alpha f(B_\alpha),
+        \end{align*}
+        %
+        is equal to a union of open sets in $Z$ and is, thus, open in $Z$.
+        Therefore, the image under $f$ of each element of $\mathcal{T}$ is an open set in $Z$.
+    \end{proof}
+\end{solution}
+\newpage

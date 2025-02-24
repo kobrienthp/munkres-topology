@@ -1,0 +1,24 @@
+
+% Redefine \theexercise to allow manual numbering
+\renewcommand{\theexercise}{\GetExerciseProperty{ID}}
+\renewcommand{\thesolution}{}
+
+%  Define a custom template for exercises
+ \DeclareExerciseEnvironmentTemplate{custom}{
+  \subsection*{\XSIMmixedcase{\GetExerciseName}~\GetExerciseProperty{ID}} 
+ }{
+   \par
+ }
+
+\xsimsetup{
+  exercise/template = custom,
+  solution/print = true
+}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}

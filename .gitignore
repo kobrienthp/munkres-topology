@@ -310,3 +310,4 @@ TSWLatexianTemp*
 *.xsim
 
 scratch.tex
+.DS_Store

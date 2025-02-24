@@ -1,0 +1,58 @@
+\subsection{Continuous Functions}
+
+\begin{exercise}[ID=2.18.10]
+    Let $f: A \rightarrow B$ and $g: C \rightarrow D$ be continuous functions.
+    Let us define a map $f \times g: A \times C \rightarrow B \times D$ by the equation
+    $$ (f \times g)(a, c) = f(a) \times g(c).$$
+    Show that $f \times g$ is continuous.
+\end{exercise}
+
+\begin{solution}
+    \begin{proof}
+        Let $(a, c) \in A \times C$ and let $W \subset B \times D$ be a neighborhood of $(f \times g)(a, c) = f(a) \times g(c)$.
+        Under the product topology there exist open sets $U \subset B$ and $V \subset C$ such that the basic open set $U \times V \subset W$ is a neighborhood of $(f \times g)(a, c)$, so that $U$ is a neighborhood of $f(a)$ and $V$ is a neighborhood of $g(c)$.
+        By Theorem 2.18.1, continuity of $f$ and $g$ implies there exist neighborhoods $U' \subset A$ of $a$ and $V' \subset C$ of $c$ such that $f(U') \subset U$ and $g(V') \subset V$.
+        Thus, $U' \times V'$ is a neighborhood of $a \times c$ such that $(f \times g)(U' \times V') = f(U') \times g(V') \subset U' \times V' \subset W$, and so $f \times g$ is continuous.
+    \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.18.11]
+    Let $F: X \times Y \rightarrow Z$. We say that $F$ is {\bf continuous in each variable separately} if $\forall y_0 \in Y$, the map $h: X \rightarrow Z$ defined by $h(x) = F(x, y_0)$ is continuous and $\forall x_0 \in X$, the map $k: Y \rightarrow Z$ defined by $k(y) = F(x_0, y)$ is continuous.
+    Show that if $F$ is continuous, then $F$ is continuous in each variable separately.
+\end{exercise}
+
+\begin{solution}
+    \begin{proof}
+        Let $(x, y_0) \in X \times Y$ and let $W$ be an open set containing $h(x) = F(x, y_0)$.
+        By Theorem 2.18.1, continuity of $F$ implies the existence of an open set $U \times V \subset X \times Y$ containing $(x, y_0)$ such that $F(U \times V) \subset W$.
+        Since $U \times \{y_0\} \subset U \times V$, $h(U) = F(U \times \{y_0\}) \subset F(U \times V) \subset W$.
+        Thus, $h: X \rightarrow Z$ is continuous.
+
+        By an analogous argument, so too is $k: Y \rightarrow Z$ continuous.
+        Thus, $F$ is continuous in each variable separately.
+    \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.18.13]
+    Let $A \subset X$, $f: A \rightarrow Y$ be continuous and let $Y$ be Hausdorff.
+    Show that if $f$ may be extended to a continuous function $g: \overline{A} \rightarrow Y$, then $g$ is uniquely determined by $f$.
+\end{exercise}
+
+\begin{solution}
+    \begin{proof}
+        Let $g: \overline{A} \rightarrow Y$ and $h: \overline{A} \rightarrow Y$ be continuous functions satisfying $x \in A \implies g(x) = h(x) = f(x)$.
+        If $A$ is closed, then $A = \overline{A}$, $g(x) = h(x) = f(x)~ \forall x \in \overline{A}$ and we are done.
+        Suppose instead that $A \neq \overline{A}$.
+        Suppose by way of contradiction that there exists a limit point $x$ of $A$ not contained in $A$ such that $g(x) \neq h(x)$.
+        Since $Y$ is Hausdorff, there exist disjoint open subsets $U$ and $V$ of $Y$ containing $g(x)$ and $h(x)$, respectively.
+        By hypothesis, $g^{-1}(U)$ and $h^{-1}(V)$ are both open in $\overline{A}$.
+        Since $x$ is a limit point of $A$, we have $g^{-1}(U) \cap A \neq \emptyset$ and $h^{-1}(V) \cap A \neq \emptyset$.
+        As $g^{-1}(U)$ and $h^{-1}(V)$ are both open sets containing $x$, so too is their intersection an open set containing $x$.
+        Since $x$ is a limit point of $A$, there must exist some $y \neq x$ contained in $g^{-1}(U) \cap h^{-1}(V) \cap A$.
+        Then $g(y) \in U$ and $h(y) \in V$, but since $y \in A$, $g(y) = h(y) = f(y)$ and so $U \cap V \neq \emptyset$, contradicting our assumption that $g(x) \neq h(x)$.
+        Thus, the extensions $g$ and $h$ of $f$ must be the same function.
+    \end{proof}
+\end{solution}
+\newpage
