@@ -269,7 +269,7 @@
         \begin{equation*}
             x_i = \begin{cases}
                 y_i & \text{if } i < N, \\
-                0 & \text{if } i \geq N.
+                0   & \text{if } i \geq N.
             \end{cases}
         \end{equation*}
         %
@@ -839,7 +839,7 @@
         %
     \end{enumerate}
     %
-    \textbf{Claim.} The function $f: \RR \rightarrow \RR^\omega$ is continuous in the product toplogy, but not in the uniform topology nor in the box topology.
+    \textbf{Claim.} The function $f: \RR \rightarrow \RR^\omega$ is continuous in the product topology, but not in the uniform topology nor in the box topology.
     \begin{proof}
         Let $t \in \RR$ be arbitrary and let $V = \prod_\alpha V_\alpha$ be a basic open neighborhood of $f(t) = (t, 2t, 3t, \ldots)$ in the product topology.
         Since a basic open set in the product topology only restricts finitely many coordinates, let $J \subset \ZZ_+$ be the set of indices for which $V_\alpha \neq \RR$.
@@ -934,7 +934,6 @@
     \end{proof}
     \bigskip
 
-
     \noindent\textbf{Claim.} The function $h: \RR \rightarrow \RR^\omega$ is continuous in the product and uniform topologies, but not in the box topology.
     %
     \begin{proof}
@@ -977,9 +976,6 @@
     \end{proof}
     \bigskip
 
-
-
-
     \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
         \addtocounter{enumi}{1} 
         \item In which topologies do the following sequences converge?
@@ -995,8 +991,254 @@
         \end{alignat*}
     \end{enumerate}
     %
+    \textbf{Claim.} The sequence $\bw_1, \bw_2, \ldots$ converges in the product topology, but not in the uniform nor box topologies.
+    %
     \begin{proof}
+        Let $\mathbf{a} = (0, 0, \ldots) \in \RR^\omega$ and let
+        %
+        \begin{equation*}
+            V = \prod_{\alpha \in \ZZ_+} V_\alpha
+        \end{equation*}
+        %
+        be an arbitrary basic open neighborhood of $\mathbf{a}$ in the product topology.
+        By definition of the product topology, there must exist $N \in \ZZ_+$ such that $V_\alpha = \RR$ for all $\alpha \geq N$.
+        We claim that for all integers $n \geq N$, each coordinate $\pi_\alpha(\bw_n)$ of $\bw_n$ lies in $V_\alpha$, so that $\bw_n \in V$.
+
+        Let $n \geq N$.
+        Note that $\bw_n$ can be written coordinatewise as
+        %
+        \begin{equation*}
+            \pi_\alpha(\bw_n) = \begin{cases}
+                0   & \text{if } \alpha < n, \\
+                n   & \text{if } \alpha \geq n.
+            \end{cases}
+        \end{equation*}
+        %
+        For indices $\alpha < n$, we have that
+        %
+        \begin{equation*}
+            \pi_\alpha(\bw_n) = \pi_\alpha(\mathbf{a}) = 0.
+        \end{equation*}
+        %
+        Hence, since $V_\alpha$ is a neighborhod of $0$, it follows that $\pi_\alpha(\bw_n) \in V_\alpha$.
+        For $\alpha \geq n$, we have that
+        %
+        \begin{equation*}
+            \pi_\alpha(\bw_n) = n,
+        \end{equation*}
+        %
+        which clearly lies in $V_\alpha = \RR$, proving that $\bw_n$ lies in $V$.
+        Since $V$ is an arbitrary open neighborhood of $\mathbf{a}$, we see that the sequence $\bw_1, \bw_2, \ldots$ converges to $\mathbf{a}$ in the product topology.
+
+        Now let $\mathbf{a} = (a_1, a_2, \ldots)$ be an arbitrary point in $\RR^\omega$ and let
+        %
+        \begin{equation*}
+            V = \prod_{\alpha \in \ZZ_+} V_\alpha
+        \end{equation*}
+        be a basic open neighborhood of $\mathbf{a}$ in the uniform topology, where
+        %
+        \begin{equation*}
+            V_\alpha = (a_\alpha - \tfrac{1}{2}, a_\alpha + \tfrac{1}{2})
+        \end{equation*}
+        %
+        for each $\alpha \in \ZZ_+$.
+        We claim that there exists no $N \in \ZZ_+$ such that for all $n \geq N,~ \bw_n \in V$.
+
+        Suppose that for some $N \in \ZZ_+,~ \bw_N \in V$, \textit{i.e.}, for all $\alpha \in \ZZ_+,~ \pi_\alpha(\bw_N) \in V_\alpha$.
+        In particular,
+        %
+        \begin{alignat*}{2}
+            &           && \quad \pi_{N+1}(\bw_N) \in V_{N+1} \\
+            & \implies  && \quad a_{N+1} - \tfrac{1}{2} < N < a_{N+1} + \tfrac{1}{2} \\
+            & \implies  && \quad a_{N+1} + \tfrac{1}{2} < N + 1 = \pi_{N+1}(\bw_{N+1}) \\
+            & \implies  && \quad \pi_{N+1}(\bw_{N+1}) \not\in V_{N+1}.
+        \end{alignat*}
+        %
+        Therefore, if for some $N \in \ZZ_+$ we have $\bw_N \in V$, then $\bw_{N+1} \not\in V$.
+        Thus, the sequence $\bw_1, \bw_2, \ldots$ does not converge to $\mathbf{a}$.
+        Since $\mathbf{a} \in \RR^\omega$ is arbitrary, the sequence does not converge to any point in $\RR^\omega$ in the uniform topology.
+        Furthermore, since the uniform topology is coarser than the box topology, the sequence fails to converge also in the box topology.
     \end{proof}
+    \bigskip
+
+    \textbf{Claim.} The sequence $\bx_1, \bx_2, \ldots$ converges in the product and uniform topologies, but not in the box topology.
+    %
+    \begin{proof}
+        Let $\mathbf{a} = (0, 0, \ldots) \in \RR^\omega$ and let
+        %
+        \begin{equation*}
+            V = \prod_{\alpha \in \ZZ_+} (-\epsilon, \epsilon),
+        \end{equation*}
+        %
+        where $\epsilon > 0$, be an arbitrary basic open neighborhood of $\mathbf{a}$ in the uniform topology.
+        We claim that there exists $N \in \ZZ_+$ such that for any integer $n \geq N$, $\bx_n \in V$.
+
+        Choose $N > 1 / \epsilon$ and let $n \geq N$.
+        Note that $\bx_n$ can be written coordinatewise as
+        %
+        \begin{equation*}
+            \pi_\alpha(\bx_n) = \begin{cases}
+                0               & \text{if } \alpha < n, \\
+                \tfrac{1}{n}    & \text{if } \alpha \geq n.
+            \end{cases}
+        \end{equation*}
+        %
+        For indices $\alpha < n$, we have that
+        %
+        \begin{equation*}
+            \pi_\alpha(\bx_n) = \pi_\alpha(\mathbf{a}) = 0 \in (-\epsilon, \epsilon).
+        \end{equation*}
+        %
+        For $\alpha \geq n$, we have that
+        %
+        \begin{equation*}
+            \pi_\alpha(\bx_n) = \tfrac{1}{n} \leq \tfrac{1}{N} < \epsilon.
+        \end{equation*}
+        %
+        Then for all $\alpha \in \ZZ_+,~ \pi_\alpha(\bx_n) \in (-\epsilon, \epsilon)$ and so $\bx_n \in V$.
+        Thus, the sequence $\bx_1, \bx_2, \ldots$ converges to $\mathbf{a}$ in the uniform topology.
+        Furthermore, since the product topology is coarser than the uniform topology, the sequence also converges to $\mathbf{a}$ in the product topology.
+
+        Now let $\mathbf{a} = (a_1, a_2, \ldots)$ be an arbitrary point in $\RR^\omega$ and let
+        %
+        \begin{equation*}
+            V = \prod_{\alpha\in\ZZ_+} V_\alpha
+        \end{equation*}
+        %
+        be a basic open neighborhood of $\mathbf{a}$ in the box topology, where
+        %
+        \begin{equation*}
+            V_\alpha = (a_\alpha - \tfrac{1}{\alpha}, a_\alpha + \tfrac{1}{\alpha})
+        \end{equation*}
+        %
+        for each $\alpha \in \ZZ_+$.
+        We claim that there exists no $N \in \ZZ_+$ such that for all $n \geq N$, $\bx_n \in V$.
+
+        Suppose that for some $N \in \ZZ_+$, $\bx_N \in V$, \textit{i.e.}, for all $\alpha \in \ZZ_+,~ \pi_\alpha(\bx_N) \in V_\alpha$.
+        In particular, for $\alpha = 2 N (N + 1)$
+        %
+        \begin{alignat*}{2}
+            &           && \quad \pi_\alpha(\bx_N) \in V_\alpha \\
+            & \implies  && \quad a_\alpha - \tfrac{1}{\alpha} < \tfrac{1}{N} < a_\alpha + \tfrac{1}{\alpha} \\
+            & \implies  && \quad \tfrac{1}{N} - \tfrac{2}{\alpha} < a_\alpha - \tfrac{1}{\alpha} \\
+            & \implies  && \quad \tfrac{1}{N + 1} < a_\alpha - \tfrac{1}{\alpha} \\
+            & \implies  && \quad \pi_\alpha(\bx_{N+1}) = \tfrac{1}{N+1} \not\in V_\alpha.
+        \end{alignat*}
+        %
+        Therefore, if for some $N \in \ZZ_+$ we have that $\bx_N \in V$, then $\bx_{N+1} \not\in V$.
+        Thus, the sequence $\bx_1, \bx_2, \ldots$ does not converge to $\mathbf{a}$.
+        Since $\mathbf{a} \in \RR^\omega$ is arbitrary, the sequence does not converge to any point in $\RR^\omega$ in the box topology.
+    \end{proof}
+    \bigskip
+
+    \textbf{Claim.} The sequence $\by_1, \by_2, \ldots$ converges in the product and uniform topologies, but not in the box topology.
+    %
+    \begin{proof}
+        Let $\mathbf{a} = (0, 0, \ldots) \in \RR^\omega$ and let
+        %
+        \begin{equation*}
+            V = \prod_{\alpha \in \ZZ_+} (-\epsilon, \epsilon),
+        \end{equation*}
+        %
+        where $\epsilon > 0$, be an arbitrary basic open neighborhood of $\mathbf{a}$ in the uniform topology.
+        We claim there exists $N \in \ZZ_+$ such that for any integer $n \geq N$, $\by_n \in V$.
+
+        Choose $N > 1/\epsilon$ and let $n \geq N$.
+        Note that $\by_n$ can be written coordinatwise as
+        %
+        \begin{equation*}
+            \pi_\alpha(\by_n) = \begin{cases}
+                \tfrac{1}{n}    & \text{if } \alpha \leq n, \\
+                0               & \text{if } \alpha > n.
+            \end{cases}
+        \end{equation*}
+        %
+        For indices $\alpha \leq n$, we have that
+        %
+        \begin{equation*}
+            \pi_\alpha(\by_n) = \tfrac{1}{n} \leq \tfrac{1}{N} \in (-\epsilon, \epsilon).
+        \end{equation*}
+        %
+        For $\alpha > n$, we have that
+        %
+        \begin{equation*}
+            \pi_\alpha(\by_n) = \pi_\alpha(\mathbf{a}) = 0 \in (-\epsilon, \epsilon).
+        \end{equation*}
+        %
+        Then for all $\alpha \in \ZZ_+,~ \pi_\alpha(\by_n) \in (-\epsilon, \epsilon)$ and so $\by_n \in V$.
+        Thus, the sequence $\by_1, \by_2, \ldots$ converges to $\mathbf{a}$ in the uniform topology.
+        Furthermore, since the product topology is coarser than the uniform topology, the sequence also converges to $\mathbf{a}$ in the product topology.
+
+        Now, let $\mathbf{a} = (a_1, a_2, \ldots)$ be an arbitrary point in $\RR^\omega$ and let
+        %
+        \begin{equation*}
+            V = \prod_{\alpha\in\ZZ_+} V_\alpha
+        \end{equation*}
+        %
+        be a basic open neighborhood of $\mathbf{a}$ in the box topology, where 
+        %
+        \begin{equation*}
+            V_\alpha = (a_\alpha - \tfrac{1}{2\alpha}, a_\alpha + \tfrac{1}{2\alpha})
+        \end{equation*}
+        %
+        for each $\alpha \in \ZZ_+$.
+        We claim that there exists no $N \in \ZZ_+$ such that for all $n \geq N,~ \by_n \in V$.
+
+        Suppose that for some $N \in \ZZ_+$, we have that $\by_N \in V$, \textit{i.e.}, for all $\alpha \in \ZZ_+,~ \pi_\alpha(\by_N) \in V_\alpha$.
+        In particular, for $\alpha = N+1$,
+        %
+        \begin{alignat*}{2}
+            &           && \quad \pi_{N+1}(\by_N) \in V_{N+1} \\
+            & \implies  && \quad a_{N+1} - \tfrac{1}{2(N+1)} < 0 < a_{N+1} + \tfrac{1}{2(N+1)} \\
+            & \implies  && \quad a_{N+1} + \tfrac{1}{2(N+1)} < \tfrac{1}{N + 1} = \pi_{N+1}(\by_{N+1}) \\
+            & \implies  && \quad \pi_{N+1}(\by_{N+1}) \not\in V_{N+1}.
+        \end{alignat*}
+        %
+        Therefore, if for some $N \in \ZZ_+$ we have that $\by_N \in V$, then $\by_{N+1} \not\in V$.
+        Thus, the sequence $\by_1, \by_2, \ldots$ does not converge to $\mathbf{a}$.
+        Since $\mathbf{a} \in \RR^\omega$ is arbitrary, the sequence does not converge to any point in $\RR^\omega$ in the box topology.
+    \end{proof}
+    \bigskip
+
+    \textbf{Claim.} The sequence $\bz_1, \bz_2, \ldots$ converges in the product, uniform and box topologies.
+    %
+    \begin{proof}
+        Let $\mathbf{a} = (0, 0, \ldots) \in \RR^\omega$ and let
+        %
+        \begin{equation*}
+            V = \prod_{\alpha\in\ZZ_+} V_\alpha
+        \end{equation*}
+        %
+        be an arbitrary open neighborhood of $\mathbf{a}$ in the box topology, where $V_\alpha = (-\epsilon_\alpha, \epsilon_\alpha)$ with $\epsilon_\alpha > 0$, for all $\alpha \in \ZZ_+$.
+        We claim there exists $N \in \ZZ_+$ such that for any integer $n \geq N$, $\bz_n \in V$.
+
+        Define $\epsilon = \min\{\epsilon_1, \epsilon_2\}$ and choose $N > 1 / \epsilon$.
+        Let $n \geq N$ and note that $\bz_n$ can be written coordinatewise as
+        %
+        \begin{equation*}
+            \pi_\alpha(\bz_n) = \begin{cases}
+                \tfrac{1}{n}    & \text{if } \alpha \leq 2, \\
+                0               & \text{if } \alpha > 2.
+            \end{cases}
+        \end{equation*}
+        %
+        For indices $\alpha > 2$, we have that
+        %
+        \begin{equation*}
+            \pi_\alpha(\bz_n) = \pi_\alpha(\mathbf{a}) = 0 \in (-\epsilon_\alpha, \epsilon_\alpha).
+        \end{equation*}
+        %
+        For $\alpha \leq 2$, we have that
+        %
+        \begin{equation*}
+            \pi_\alpha(\bz_n) = \tfrac{1}{n} \leq \tfrac{1}{N} \in (-\epsilon, \epsilon) \subset (-\epsilon_\alpha, \epsilon_\alpha).
+        \end{equation*}
+        %
+        Then, for all $\alpha \in \ZZ_+,~ \pi_\alpha(\bz_n) \in V_\alpha$ and so $\bz_n \in V$.
+        Thus, the sequence $\bz_1, \bz_2, \ldots$ converges to $\mathbf{a}$ in the box topology.
+        Furthermore, since both the product and uniform topologies are coarser than the box topology, the sequence also converges to $\mathbf{a}$ in the product and uniform topologies.
+    \end{proof}
+
 \end{solution}
 
 \end{document}
