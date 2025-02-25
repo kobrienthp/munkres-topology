@@ -710,3 +710,57 @@
     \end{proof}
 \end{solution}
 \newpage
+
+\begin{exercise}[ID=2.20.5]
+    Let $\RR^\infty$ be the subset of $\RR^\omega$ consisting of all sequences that are eventually zero.
+    What is the closure of $\RR^\infty$ in the uniform topology?
+\end{exercise}
+%
+\begin{solution}
+    \textbf{Claim.} The closure of $\RR^\infty$ in the uniform topology is the set of all sequences which converge to zero.
+    %
+    \begin{proof}
+        Let $\by = (y_i) \in \RR^\omega$ be such that the sequence $y_1, y_2, \ldots$ converges to $0$ in the uniform topology.
+        Fix $\epsilon > 0$ and let
+        %
+        \begin{equation*}
+            U = \prod_{i\in\ZZ_+} U_i = \prod_{i\in\ZZ_+} (y_i - \epsilon, y_i + \epsilon)
+        \end{equation*}
+        %
+        be a basic open neighborhood of $\by$ in the uniform topology.
+        By hypothesis, there exists $N \in \ZZ_+$ such that $\forall n \geq N,~ y_n \in (-\epsilon, \epsilon)$, from which it follows that $0 \in (y_n - \epsilon, y_n + \epsilon)$.
+
+        Let $\bx = (x_i) \in \RR^\omega$ be defined by the formula
+        %
+        \begin{equation*}
+            x_i = \begin{cases}
+                y_i & \text{if } i < N, \\
+                0   & \text{if } i \geq N.
+            \end{cases}
+        \end{equation*}
+        %
+        By construction, we have that $\bx \in \RR^\infty$.
+        Furthermore, we can show that $\bx \in U$;
+        for $i < N$, we trivially have that $x_i = y_i \in U_i$, whereas, for $i \geq N$, we have shown above that $x_i = 0 \in U_i$.
+        Thus, we see that for an arbitrary open neighborhood $U$ of $\by$, we have $U \cap \RR^\infty \neq \emptyset$.
+        It follows that $\by \in \overline{\RR^\infty}$.
+
+        Conversely, let $\bz \in \RR^\omega$ be such that the sequence $z_1, z_2, \ldots$ does \textit{not} converge to zero in the uniform topology.
+        Since $\bz$ does not converge to $0$, there exists some $\delta > 0$ such that for infinitely many indices $i$, we have $\abs{z_i} \geq \delta$.
+        Let $J$ be the infinite set of such indices and define the open neighborhood of $\bz$ by
+        %
+        \begin{equation*}
+            U = \prod_{i\in\ZZ_+} U_i = (z_i - \tfrac{\delta}{2}, z_i + \tfrac{\delta}{2}).
+        \end{equation*}
+        %
+        By construction, for all indices $i \in J$, we have that $0 \not\in U_i$.
+
+        Let $\bx$ be an arbitrary point in $\RR^\infty$.
+        Then there exists $N \in \ZZ_+$ such that for all $n \geq N,~ x_n = 0$.
+        Since $J$ is infinite, there must be some index $i \geq N$ such that $i \in J$ so that $x_i = 0 \not\in U_i$.
+        Hence, $\bx \not\in U$.
+        Since $\bx$ is arbitrary, it follows that $U \cap \RR^\infty = \emptyset$ and so $\bz \not \in \overline{\RR^\infty}$.
+
+        Thus, a point $\by = (y_i) \in \RR^\omega$ is in the closure of $\RR^\infty$ in the uniform topology if and only if the sequence $(y_i)$ converges to zero.
+    \end{proof}
+\end{solution}
