@@ -310,7 +310,10 @@
     \end{enumerate}
     %
     \textbf{Claim.} The function $f: \RR \rightarrow \RR^\omega$ is continuous in the product topology, but not in the uniform topology nor in the box topology.
-    \begin{proof}
+    \begin{proof}~
+
+        \subsubsection*{Product topology}
+        %
         Let $t \in \RR$ be arbitrary and let $V = \prod_\alpha V_\alpha$ be a basic open neighborhood of $f(t) = (t, 2t, 3t, \ldots)$ in the product topology.
         Since a basic open set in the product topology only restricts finitely many coordinates, let $J \subset \ZZ_+$ be the set of indices for which $V_\alpha \neq \RR$.
         For each $\alpha \in J$, choose $\epsilon_\alpha > 0$ so that $V_\alpha = (\alpha t - \epsilon_\alpha, \alpha t + \epsilon_\alpha)$.
@@ -333,30 +336,35 @@
         Furthermore, since $V_\alpha = \RR$ for all other indices, $f(x)_\alpha \in V_\alpha$ also for $\alpha \notin J$ so that $f(x) \in V$.
         Thus, $f(U) \subset V$, proving that $f$ is continuous in the product topology.
 
-        Now choose $0 < \epsilon < 1$ and let $V = B_{\overline{\rho}}(f(t), \epsilon)$, an open ball in the uniform metric $\overline{\rho}$ centered at $f(t)$, and let $U = (t - \delta, t + \delta)$ be an open interval centered at $t$ in $\RR$, for some $\delta > 0$.
-        Note that for $\epsilon < 1,~ V = \prod_\alpha (\alpha t - \epsilon, \alpha t + \epsilon)$.
+        %
+        \subsubsection*{Uniform and box topologies}
+        %
+        Now choose $0 < \epsilon < 1$ and let $V = B_{\overline{\rho}}(f(t), \epsilon)$ be an open ball in the uniform metric $\overline{\rho}$ centered at $f(t)$.
+        Let $U = (t - \delta, t + \delta)$ be an open interval centered at $t$ in $\RR$, for some $\delta > 0$.
         We claim that $f(U) \not\subset V$.
 
-        Suppose by way of contradiction that $f(U) \subset V$.
-        Given $x \in U$, we have that
+        Let $t \neq x \in U$ so that $\abs{t - x} > 0$.
+        Then for any index $\alpha > 1 / \abs{t - x}$, we have
         %
         \begin{equation*}
-            \alpha (t - \delta) < \alpha x < \alpha (t + \delta).
+          \abs{\pi_\alpha(f(t)) - \pi_\alpha(f(x))} = \alpha \abs{t - x} > 1
         \end{equation*}
         %
-        Since $f(U) \subset V$, we require that $\alpha x = f(x)_\alpha \in (\alpha t - \epsilon, \alpha t + \epsilon)$, for all $\alpha \in \ZZ_+$.
-        From here it follows that for all $\alpha \in \ZZ_+$,
+        so that 
         %
-        \begin{align*}
-            \alpha \delta               &\leq \epsilon \\
-            \implies \delta / \epsilon  &\leq 1 / \alpha \\
-            \implies \delta / \epsilon  &\leq \inf\{1 / \alpha \mid \alpha \in \ZZ_+\} \\
-                                        &= 0 \\
-            \implies \delta             &= 0,
-        \end{align*}
+        \begin{equation*}
+          \overline{d}(\pi_\alpha(f(t)), \pi_\alpha(f(x))) = 1.
+        \end{equation*}
         %
-        contradicting our assumption that $\delta > 0$ and, thus, that $U$ is an open neighborhood of $t$.
-        Thus, $f$ is not continuous in the uniform topology.
+        Since for sufficiently large indices, the coorinates of $f(x)$ must differ from those of $f(t)$ by a number greater than 1, it follows that
+        %
+        \begin{equation*}
+          \sup\left\{\overline{d}(\pi_\alpha(f(t)), \pi_\alpha(f(x))) \mid \alpha \in \ZZ_+\right\} = 1 > \epsilon.
+        \end{equation*}
+        %
+        Hence, $f(x) \not\in  V$.
+        As this result does not depend on our choice of $\delta$, there exists no $\delta > 0$ such that $f(U) \subset V$.
+        It follows that $f$ is not continuous in the uniform topology.
 
         Finally, since the box topology is finer than the uniform topology, we have that $f$ is also not continuous in the box topology.
     \end{proof}
@@ -364,22 +372,57 @@
 
     \noindent\textbf{Claim.} The function $g: \RR \rightarrow \RR^\omega$ is continuous in the product and uniform topologies, but not in the box topology.
     %
-    \begin{proof}
-        Let $t \in \RR$ be arbitrary and let choose $\epsilon > 0$.
+    \begin{proof}~
+
+        \subsubsection*{Product and uniform topologies}
+        %
+        Let $t \in \RR$ be arbitrary and let $\epsilon > 0$.
         Let $V = B_{\overline{\rho}}(g(t), \epsilon)$ be an open ball in the uniform metric $\overline{\rho}$ centered at $g(t)$, and let $U = (t - \epsilon, t + \epsilon)$ be an open interval centered at $t$ in $\RR$.
-        Note as above that for $\epsilon < 1,~ V = \prod_\alpha (t - \epsilon, t + \epsilon)$, whereas for $\epsilon \geq 1,~ V = \RR^\omega$.
         We show that $g(U) \subset V$.
 
         Given $x \in U$, we have that
         %
         \begin{equation*}
-            t - \epsilon < x < t + \epsilon.
+          \abs{t - x} < \epsilon.
         \end{equation*}
         %
-        Then by definition $x = g(x)_\alpha \in V_\alpha$ for all $\alpha \in \ZZ_+$, so that $g(x) \in V = B_{\overline{\rho}}(g(t), \epsilon)$.
-        Thus, $g(U) \subset V$, proving that $g$ is continuous in the uniform topology.
+        If we choose $\epsilon \leq 1$, then for all $\alpha \in \ZZ_+$,
+        %
+        \begin{equation*}
+        \overline{d}(\pi_\alpha(g(t)), \pi_\alpha(g(x))) = \abs{t - x} < \epsilon.
+        \end{equation*}
+        %
+        Thus,
+        %
+        \begin{align*}
+          \overline{\rho}(g(t), g(x)) &= \sup\{\overline{d}(\pi_\alpha(g(t)), \pi_\alpha(g(x))) \mid \alpha \in \ZZ_+\} \\
+                                      &= \sup\{\abs{t - x}\} \\
+                                      &= \abs{t - x} \\
+                                      &< \epsilon,
+        \end{align*}
+        %
+        from which it follows that $g(U) \subset V$.
+
+        If, instead, we choose $\epsilon > 1$, then for all $\alpha \in \ZZ_+$,
+        %
+        \begin{equation*}
+          \overline{d}(\pi_\alpha(g(t)), \pi_\alpha(g(x))) \leq 1 < \epsilon.
+        \end{equation*}
+        %
+        Thus,
+        %
+        \begin{equation*}
+          \overline{\rho}(g(t), g(x)) \leq 1 < \epsilon,
+        \end{equation*}
+        %
+        from which it again follows that $g(U) \subset V$.
+        Therefore, $g$ is continuous in the uniform topology.
+
         Furthermore, since the product topology is coarser than the uniform topology, we have that $g$ is also continuous in the product topology.
 
+        %
+        \subsubsection*{Box topology}
+        %
         Finally, consider the open neighborhood $V = \prod_\alpha (t - \tfrac{1}{\alpha}, t + \tfrac{1}{\alpha})$ of $g(t) = (t, t, t, \ldots)$ in the box topology and let $U = (t - \delta, t + \delta)$ be an open interval centered at $t$ in $\RR$, for some $\delta > 0$.
         We claim that $g(U) \not\subset V$.
 
@@ -406,21 +449,54 @@
 
     \noindent\textbf{Claim.} The function $h: \RR \rightarrow \RR^\omega$ is continuous in the product and uniform topologies, but not in the box topology.
     %
-    \begin{proof}
-        Let $t \in \RR$ be arbitrary and let choose $\epsilon > 0$.
+    \begin{proof}~
+
+        \subsubsection*{Product and uniform topologies}
+        %
+        Let $t \in \RR$ be arbitrary and let $\epsilon > 0$.
         Let $V = B_{\overline{\rho}}(h(t), \epsilon)$ be an open ball in the uniform metric $\overline{\rho}$ centered at $h(t)$, and let $U = (t - \epsilon, t + \epsilon)$ be an open interval centered at $t$ in $\RR$.
         We show that $h(U) \subset V$.
 
         Given $x \in U$, we have that
         %
         \begin{equation*}
-            (t - \epsilon) / \alpha < x / \alpha < (t + \epsilon) / \alpha.
+          \abs{t - x} < \epsilon.
         \end{equation*}
         %
-        Since $\forall \alpha \in \ZZ_+,~ \epsilon / \alpha \leq \epsilon$, we have that $\tfrac{1}{\alpha} x = h(x)_\alpha \in V_\alpha$ for all $\alpha \in \ZZ_+$, so that $h(x) \in V = B_{\overline{\rho}}(h(t), \epsilon)$.
-        Thus, $h(U) \subset V$, proving that $h$ is continuous in the uniform topology.
+        If we choose $\epsilon \leq 1$, then for all $\alpha \in \ZZ_+$,
+        %
+        \begin{equation*}
+        \overline{d}(\pi_\alpha(h(t)), \pi_\alpha(h(x))) = \abs{t - x} / \alpha.
+        \end{equation*}
+        %
+        Thus,
+        %
+        \begin{equation*}
+          \overline{\rho}(h(t), h(x)) = \sup\{\abs{t - x} / \alpha \mid \alpha \in \ZZ_+\} = \abs{t - x} < \epsilon,
+        \end{equation*}
+        %
+        from which it follows that $h(U) \subset V$.
+
+        If, instead, we choose $\epsilon > 1$, then for all $\alpha \in \ZZ_+$,
+        %
+        \begin{equation*}
+          \overline{d}(\pi_\alpha(h(t)), \pi_\alpha(h(x))) \leq 1 < \epsilon.
+        \end{equation*}
+        %
+        Thus,
+        %
+        \begin{equation*}
+          \overline{\rho}(h(t), h(x)) \leq 1 < \epsilon,
+        \end{equation*}
+        %
+        from which it again follows that $h(U) \subset V$.
+        Therefore, $h$ is continuous in the uniform topology.
+
         Furthermore, since the product topology is coarser than the uniform topology, we have that $h$ is also continuous in the product topology.
 
+        %
+        \subsubsection*{Box topology}
+        %
         Finally, consider the open neighborhood $V = \prod_\alpha (\tfrac{t}{\alpha} - \tfrac{1}{\alpha^2}, \tfrac{t}{\alpha} + \tfrac{1}{\alpha^2})$ of $h(t) = (t, \tfrac{1}{2} t, \tfrac{1}{3} t, \ldots)$ in the box topology and let $U = (t - \delta, t + \delta)$ be an open interval centered at $t$ in $\RR$, for some $\delta > 0$.
         We claim that $h(U) \not\subset V$.
 
@@ -463,7 +539,10 @@
     %
     \textbf{Claim.} The sequence $\bw_1, \bw_2, \ldots$ converges in the product topology, but not in the uniform nor box topologies.
     %
-    \begin{proof}
+    \begin{proof}~
+
+        \subsubsection*{Product topology}
+        %
         Let $\mathbf{a} = (0, 0, \ldots) \in \RR^\omega$ and let
         %
         \begin{equation*}
@@ -500,31 +579,25 @@
         which clearly lies in $V_\alpha = \RR$, proving that $\bw_n$ lies in $V$.
         Since $V$ is an arbitrary open neighborhood of $\mathbf{a}$, we see that the sequence $\bw_1, \bw_2, \ldots$ converges to $\mathbf{a}$ in the product topology.
 
-        Now let $\mathbf{a} = (a_1, a_2, \ldots)$ be an arbitrary point in $\RR^\omega$ and let
         %
-        \begin{equation*}
-            V = \prod_{\alpha \in \ZZ_+} V_\alpha
-        \end{equation*}
-        be a basic open neighborhood of $\mathbf{a}$ in the uniform topology, where
+        \subsubsection*{Uniform and box topologies}
         %
-        \begin{equation*}
-            V_\alpha = (a_\alpha - \tfrac{1}{2}, a_\alpha + \tfrac{1}{2})
-        \end{equation*}
-        %
-        for each $\alpha \in \ZZ_+$.
-        We claim that there exists no $N \in \ZZ_+$ such that for all $n \geq N,~ \bw_n \in V$.
+        Now let $\mathbf{a} = (a_1, a_2, \ldots)$ be an arbitrary point in $\RR^\omega$ and let $B_{\overline{\rho}}(\mathbf{a}, \tfrac{1}{2})$ be an open ball centered at $\mathbf{a}$ in the uniform topology.
+        We claim that there exists no $N \in \ZZ_+$ such that for all $n \geq N,~ \bw_n \in B_{\overline{\rho}}(\mathbf{a}, \tfrac{1}{2})$.
 
-        Suppose that for some $N \in \ZZ_+,~ \bw_N \in V$, \textit{i.e.}, for all $\alpha \in \ZZ_+,~ \pi_\alpha(\bw_N) \in V_\alpha$.
+        Suppose that for some $N \in \ZZ_+,~ \bw_N \in B_{\overline{\rho}}(\mathbf{a}, \tfrac{1}{2})$.
+        Since $\overline{\rho}(\mathbf{a}, \bw_N) < \tfrac{1}{2}$, it follows that $\abs{a_\alpha - \pi_\alpha(\bw_N)} < \tfrac{1}{2}$ for all $\alpha \in \ZZ_+$.
         In particular,
         %
         \begin{alignat*}{2}
-            &           && \quad \pi_{N+1}(\bw_N) \in V_{N+1} \\
+            &           && \quad \abs{a_{N+1} - \pi_{N+1}(\bw_N)} < \tfrac{1}{2} \\
             & \implies  && \quad a_{N+1} - \tfrac{1}{2} < N < a_{N+1} + \tfrac{1}{2} \\
             & \implies  && \quad a_{N+1} + \tfrac{1}{2} < N + 1 = \pi_{N+1}(\bw_{N+1}) \\
-            & \implies  && \quad \pi_{N+1}(\bw_{N+1}) \not\in V_{N+1}.
+            & \implies  && \quad \abs{a_{N+1} - \pi_{N+1}(\bw_{N+1})} > \tfrac{1}{2} \\
+            & \implies  && \quad \bw_{N+1} \not\in B_{\overline{\rho}}(\mathbf{a}, \tfrac{1}{2}).
         \end{alignat*}
         %
-        Therefore, if for some $N \in \ZZ_+$ we have $\bw_N \in V$, then $\bw_{N+1} \not\in V$.
+        Therefore, if for some $N \in \ZZ_+$ we have $\bw_N \in B_{\overline{\rho}}(\mathbf{a}, \tfrac{1}{2})$, then $\bw_{N+1} \not\in B_{\overline{\rho}}(\mathbf{a}, \tfrac{1}{2})$.
         Thus, the sequence $\bw_1, \bw_2, \ldots$ does not converge to $\mathbf{a}$.
         Since $\mathbf{a} \in \RR^\omega$ is arbitrary, the sequence does not converge to any point in $\RR^\omega$ in the uniform topology.
         Furthermore, since the uniform topology is coarser than the box topology, the sequence fails to converge also in the box topology.
@@ -533,15 +606,13 @@
 
     \textbf{Claim.} The sequence $\bx_1, \bx_2, \ldots$ converges in the product and uniform topologies, but not in the box topology.
     %
-    \begin{proof}
-        Let $\mathbf{a} = (0, 0, \ldots) \in \RR^\omega$ and let
+    \begin{proof}~
+
+        \subsubsection*{Product and uniform topologies}
         %
-        \begin{equation*}
-            V = \prod_{\alpha \in \ZZ_+} (-\epsilon, \epsilon),
-        \end{equation*}
-        %
-        where $\epsilon > 0$, be an arbitrary basic open neighborhood of $\mathbf{a}$ in the uniform topology.
-        We claim that there exists $N \in \ZZ_+$ such that for any integer $n \geq N$, $\bx_n \in V$.
+        Let $\mathbf{a} = (0, 0, \ldots) \in \RR^\omega$.
+        Fix $\epsilon > 0$ and let $B_{\overline{\rho}}(\mathbf{a}, \epsilon)$ be a basic open neighborhood of $\mathbf{a}$ in the uniform topology.
+        We claim that there exists $N \in \ZZ_+$ such that for any integer $n \geq N$, $\bx_n \in B_{\overline{\rho}}(\mathbf{a}, \epsilon)$.
 
         Choose $N > 1 / \epsilon$ and let $n \geq N$.
         Note that $\bx_n$ can be written coordinatewise as
@@ -553,22 +624,23 @@
             \end{cases}
         \end{equation*}
         %
-        For indices $\alpha < n$, we have that
+        Then 
         %
-        \begin{equation*}
-            \pi_\alpha(\bx_n) = \pi_\alpha(\mathbf{a}) = 0 \in (-\epsilon, \epsilon).
-        \end{equation*}
+        \begin{align*}
+          \overline{\rho}(\mathbf{a}, \bx_n)  &= \sup\{\overline{d}(a_\alpha, \pi_\alpha(\bx_n)) \mid \alpha \in \ZZ_+\} \\
+                                              &= \sup\{0, 1/n\} \\
+                                              &= 1/n \\
+                                              &\leq 1/N \\
+                                              &< \epsilon.
+        \end{align*}
         %
-        For $\alpha \geq n$, we have that
-        %
-        \begin{equation*}
-            \pi_\alpha(\bx_n) = \tfrac{1}{n} \leq \tfrac{1}{N} < \epsilon.
-        \end{equation*}
-        %
-        Then for all $\alpha \in \ZZ_+,~ \pi_\alpha(\bx_n) \in (-\epsilon, \epsilon)$ and so $\bx_n \in V$.
-        Thus, the sequence $\bx_1, \bx_2, \ldots$ converges to $\mathbf{a}$ in the uniform topology.
+        Thus, $\bx_n \in B_{\overline{\rho}}(\mathbf{a}, \epsilon)$.
+        It follows that the sequence $\bx_1, \bx_2, \ldots$ converges to $\mathbf{a}$ in the uniform topology.
         Furthermore, since the product topology is coarser than the uniform topology, the sequence also converges to $\mathbf{a}$ in the product topology.
 
+        %
+        \subsubsection*{Box topology}
+        %
         Now let $\mathbf{a} = (a_1, a_2, \ldots)$ be an arbitrary point in $\RR^\omega$ and let
         %
         \begin{equation*}
@@ -603,42 +675,41 @@
 
     \textbf{Claim.} The sequence $\by_1, \by_2, \ldots$ converges in the product and uniform topologies, but not in the box topology.
     %
-    \begin{proof}
-        Let $\mathbf{a} = (0, 0, \ldots) \in \RR^\omega$ and let
-        %
-        \begin{equation*}
-            V = \prod_{\alpha \in \ZZ_+} (-\epsilon, \epsilon),
-        \end{equation*}
-        %
-        where $\epsilon > 0$, be an arbitrary basic open neighborhood of $\mathbf{a}$ in the uniform topology.
-        We claim there exists $N \in \ZZ_+$ such that for any integer $n \geq N$, $\by_n \in V$.
+    \begin{proof}~
 
-        Choose $N > 1/\epsilon$ and let $n \geq N$.
-        Note that $\by_n$ can be written coordinatwise as
+        \subsubsection*{Product and uniform topologies}
+        %
+        Let $\mathbf{a} = (0, 0, \ldots) \in \RR^\omega$.
+        Fix $\epsilon > 0$ and let $B_{\overline{\rho}}(\mathbf{a}, \epsilon)$ be a basic open neighborhood of $\mathbf{a}$ in the uniform topology.
+        We claim that there exists $N \in \ZZ_+$ such that for any integer $n \geq N$, $\by_n \in B_{\overline{\rho}}(\mathbf{a}, \epsilon)$.
+
+        Choose $N > 1 / \epsilon$ and let $n \geq N$.
+        Note that $\by_n$ can be written coordinatewise as
         %
         \begin{equation*}
             \pi_\alpha(\by_n) = \begin{cases}
-                \tfrac{1}{n}    & \text{if } \alpha \leq n, \\
-                0               & \text{if } \alpha > n.
+                \tfrac{1}{n}  & \text{if } \alpha \leq n, \\
+                0             & \text{if } \alpha > n.
             \end{cases}
         \end{equation*}
         %
-        For indices $\alpha \leq n$, we have that
+        Then 
         %
-        \begin{equation*}
-            \pi_\alpha(\by_n) = \tfrac{1}{n} \leq \tfrac{1}{N} \in (-\epsilon, \epsilon).
-        \end{equation*}
+        \begin{align*}
+          \overline{\rho}(\mathbf{a}, \by_n)  &= \sup\{\overline{d}(a_\alpha, \pi_\alpha(\by_n)) \mid \alpha \in \ZZ_+\} \\
+                                              &= \sup\{0, 1/n\} \\
+                                              &= 1/n \\
+                                              &\leq 1/N \\
+                                              &< \epsilon.
+        \end{align*}
         %
-        For $\alpha > n$, we have that
-        %
-        \begin{equation*}
-            \pi_\alpha(\by_n) = \pi_\alpha(\mathbf{a}) = 0 \in (-\epsilon, \epsilon).
-        \end{equation*}
-        %
-        Then for all $\alpha \in \ZZ_+,~ \pi_\alpha(\by_n) \in (-\epsilon, \epsilon)$ and so $\by_n \in V$.
-        Thus, the sequence $\by_1, \by_2, \ldots$ converges to $\mathbf{a}$ in the uniform topology.
+        Thus, $\by_n \in B_{\overline{\rho}}(\mathbf{a}, \epsilon)$.
+        It follows that the sequence $\by_1, \by_2, \ldots$ converges to $\mathbf{a}$ in the uniform topology.
         Furthermore, since the product topology is coarser than the uniform topology, the sequence also converges to $\mathbf{a}$ in the product topology.
 
+        %
+        \subsubsection*{Box topology}
+        %
         Now, let $\mathbf{a} = (a_1, a_2, \ldots)$ be an arbitrary point in $\RR^\omega$ and let
         %
         \begin{equation*}
@@ -717,50 +788,59 @@
 \end{exercise}
 %
 \begin{solution}
-    \textbf{Claim.} The closure of $\RR^\infty$ in the uniform topology is the set of all sequences which converge to zero.
+  \textbf{Claim.} The closure of $\RR^\infty$ in the uniform topology is given by the set of sequences
+  %
+  \begin{equation*}
+    A = \{ (x_1, x_2, \ldots) \in \RR^\omega \mid \forall \epsilon > 0,~ \exists N \in \ZZ_+ ~\textrm{such that}~ \overline{\rho}(\{ x_N, x_{N+1}, \ldots \}, \mathbf{0}) < \epsilon \},
+  \end{equation*}
+  %
+  where $\mathbf{0} = (0, 0, \ldots)$.
+  \begin{proof}
+    Let $\bx \in A$.
+    Fix $\epsilon > 0$ and let $B_{\overline{\rho}}(\bx, \epsilon)$ be an open ball centered at $\bx$ in the uniform topology.
+    By definition of the set $A$, there exists $N \in \ZZ_+$ such that $\overline{\rho}(\{ x_N, x_{N+1}, \ldots \}, \mathbf{0}) < \epsilon$.
+    Consider the point $\by \in \RR^\infty$ given by the formula
     %
-    \begin{proof}
-        Let $\by = (y_i) \in \RR^\omega$ be such that the sequence $y_1, y_2, \ldots$ converges to $0$ in the uniform topology.
-        Fix $\epsilon > 0$ and let
-        %
-        \begin{equation*}
-            U = \prod_{i\in\ZZ_+} U_i = \prod_{i\in\ZZ_+} (y_i - \epsilon, y_i + \epsilon)
-        \end{equation*}
-        %
-        be a basic open neighborhood of $\by$ in the uniform topology.
-        By hypothesis, there exists $N \in \ZZ_+$ such that $\forall n \geq N,~ y_n \in (-\epsilon, \epsilon)$, from which it follows that $0 \in (y_n - \epsilon, y_n + \epsilon)$.
+    \begin{equation*}
+        y_i =
+        \begin{cases}
+            x_i & \text{if } i < N, \\
+            0   & \text{if } i \geq N.
+        \end{cases}
+    \end{equation*}
+    %
+    Then
+    %
+    \begin{align*}
+      \overline{\rho}(\bx, \by) &= \sup\{\min(\abs{x_i - y_i}, 1) \mid i \in \ZZ_+\} \\
+                                &= \sup\{\min(\abs{x_N - 0}, 1), \min(\abs{x_{N+1} - 0}, 1), \ldots\} \\
+                                &= \overline{\rho}(\{ x_N, x_{N+1}, \ldots \}, \mathbf{0}).
+    \end{align*}
+    %
+    Since $\bx \in A$, we have that $\overline{\rho}(\bx, \by) = \overline{\rho}(\{ x_N, x_{N+1}, \ldots \}, \mathbf{0}) < \epsilon$.
+    Thus, $\by \in B_{\overline{\rho}}(\bx, \epsilon) \cap \RR^\infty$, from which it follows that $\bx \in \overline{\RR^\infty}$.
 
-        Let $\bx = (x_i) \in \RR^\omega$ be defined by the formula
-        %
-        \begin{equation*}
-            x_i = \begin{cases}
-                y_i & \text{if } i < N, \\
-                0   & \text{if } i \geq N.
-            \end{cases}
-        \end{equation*}
-        %
-        By construction, we have that $\bx \in \RR^\infty$.
-        Furthermore, we can show that $\bx \in U$;
-        for $i < N$, we trivially have that $x_i = y_i \in U_i$, whereas, for $i \geq N$, we have shown above that $x_i = 0 \in U_i$.
-        Thus, we see that for an arbitrary open neighborhood $U$ of $\by$, we have $U \cap \RR^\infty \neq \emptyset$.
-        It follows that $\by \in \overline{\RR^\infty}$.
-
-        Conversely, let $\bz \in \RR^\omega$ be such that the sequence $z_1, z_2, \ldots$ does \textit{not} converge to zero in the uniform topology.
-        Since $\bz$ does not converge to $0$, there exists some $\delta > 0$ such that for infinitely many indices $i$, we have $\abs{z_i} \geq \delta$.
-        Let $J$ be the infinite set of such indices and define the open neighborhood of $\bz$ by
-        %
-        \begin{equation*}
-            U = \prod_{i\in\ZZ_+} U_i = (z_i - \tfrac{\delta}{2}, z_i + \tfrac{\delta}{2}).
-        \end{equation*}
-        %
-        By construction, for all indices $i \in J$, we have that $0 \not\in U_i$.
-
-        Let $\bx$ be an arbitrary point in $\RR^\infty$.
-        Then there exists $N \in \ZZ_+$ such that for all $n \geq N,~ x_n = 0$.
-        Since $J$ is infinite, there must be some index $i \geq N$ such that $i \in J$ so that $x_i = 0 \not\in U_i$.
-        Hence, $\bx \not\in U$.
-        Since $\bx$ is arbitrary, it follows that $U \cap \RR^\infty = \emptyset$ and so $\bz \not \in \overline{\RR^\infty}$.
-
-        Thus, a point $\by = (y_i) \in \RR^\omega$ is in the closure of $\RR^\infty$ in the uniform topology if and only if the sequence $(y_i)$ converges to zero.
-    \end{proof}
+    Conversely, suppose $\bx$ is an arbitrary point in the closure of $\RR^\infty$.
+    Then for every $\epsilon > 0$, there exists $\by \in \RR^\infty$ such that
+    %
+    \begin{equation*}
+      \overline{\rho}(\bx, \by) < \epsilon.
+    \end{equation*}
+    %
+    Since $\by \in \RR^\infty$, there exists $N \in \ZZ_+$ such that $y_n = 0$ for all $n \geq N$.
+    Consequently,
+    %
+    \begin{equation*}
+      \overline{\rho}(\bx, \by) = \sup\big( \{ \min(\abs{x_i - y_i}, 1) \mid i < N \} \cup \{ \min(\abs{x_n - 0}, 1) \mid n \geq N \big) < \epsilon.
+    \end{equation*}
+    %
+    This implies that
+    %
+    \begin{equation*}
+      \overline{\rho}(\{ x_N, x_{N+1}, \ldots \}, \mathbf{0}) < \epsilon,
+    \end{equation*}
+    %
+    so $\bx \in A$.
+    Hence, $\overline{\RR^\infty} = A$ in the uniform topology.
+  \end{proof}
 \end{solution}
