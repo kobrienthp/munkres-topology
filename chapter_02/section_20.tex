@@ -569,7 +569,7 @@
             \pi_\alpha(\bw_n) = \pi_\alpha(\mathbf{a}) = 0.
         \end{equation*}
         %
-        Hence, since $V_\alpha$ is a neighborhod of $0$, it follows that $\pi_\alpha(\bw_n) \in V_\alpha$.
+        Hence, since $V_\alpha$ is a neighborhood of $0$, it follows that $\pi_\alpha(\bw_n) \in V_\alpha$.
         For $\alpha \geq n$, we have that
         %
         \begin{equation*}
@@ -604,7 +604,7 @@
     \end{proof}
     \bigskip
 
-    \textbf{Claim.} The sequence $\bx_1, \bx_2, \ldots$ converges in the product and uniform topologies, but not in the box topology.
+    \noindent\textbf{Claim.} The sequence $\bx_1, \bx_2, \ldots$ converges in the product and uniform topologies, but not in the box topology.
     %
     \begin{proof}~
 
@@ -673,7 +673,7 @@
     \end{proof}
     \bigskip
 
-    \textbf{Claim.} The sequence $\by_1, \by_2, \ldots$ converges in the product and uniform topologies, but not in the box topology.
+    \noindent\textbf{Claim.} The sequence $\by_1, \by_2, \ldots$ converges in the product and uniform topologies, but not in the box topology.
     %
     \begin{proof}~
 
@@ -741,7 +741,7 @@
     \end{proof}
     \bigskip
 
-    \textbf{Claim.} The sequence $\bz_1, \bz_2, \ldots$ converges in the product, uniform and box topologies.
+    \noindent\textbf{Claim.} The sequence $\bz_1, \bz_2, \ldots$ converges in the product, uniform and box topologies.
     %
     \begin{proof}
         Let $\mathbf{a} = (0, 0, \ldots) \in \RR^\omega$ and let
@@ -844,3 +844,139 @@
     Hence, $\overline{\RR^\infty} = A$ in the uniform topology.
   \end{proof}
 \end{solution}
+\newpage
+
+%
+\begin{exercise}[ID=2.20.6]
+  Let $\overline{\rho}$ be the uniform metric on $\RR^\omega$.
+  Given $\bx = (x_1, x_2, \ldots) \in \RR^\omega$ and given $0 < \epsilon < 1$, let
+  %
+  \begin{equation*}
+    U(\bx, \epsilon) = (x_1 - \epsilon, x_1 + \epsilon) \times \cdots \times (x_n - \epsilon, x_n + \epsilon) \times \cdots.
+  \end{equation*}
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item Show that $U(\bx, \epsilon)$ is not equal to the $\epsilon$-ball $B_{\overline{\rho}}(\bx, \epsilon)$.
+    \item Show that $U(\bx, \epsilon)$ is not even open in the uniform topology.
+    \item Show that
+      %
+      \begin{equation*}
+        B_{\overline{\rho}}(\bx, \epsilon) = \bigcup_{\delta < \epsilon} U(\bx, \delta).
+      \end{equation*}
+      %
+  \end{enumerate}
+\end{exercise}
+%
+\begin{solution}
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item Show that $U(\bx, \epsilon)$ is not equal to the $\epsilon$-ball $B_{\overline{\rho}}(\bx, \epsilon)$.
+  \end{enumerate}
+  %
+  \begin{proof}
+    Let $0 < \epsilon < 1$.
+    Consider the point $\by \in \RR^\omega$ whose components are given by
+    %
+    \begin{equation*}
+      y_\alpha = x_\alpha + \epsilon (1 - \tfrac{1}{\alpha})
+    \end{equation*}
+    %
+    for all $\alpha \in \ZZ_+$.
+    Given $\alpha \in \ZZ_+$, we have
+    %
+    \begin{equation*}
+      x_\alpha - \epsilon < x_\alpha + \epsilon (1 - \tfrac{1}{\alpha}) < x_\alpha + \epsilon
+    \end{equation*}
+    %
+    so that $\by \in U(\bx, \epsilon)$.
+    Furthermore,
+    %
+    \begin{align*}
+      \overline{\rho}(\bx, \by) &= \sup\{ \min(\abs{x_\alpha - y_\alpha}, 1) \mid \alpha \in \ZZ_+ \} \\
+                                &= \sup\{ \min(\epsilon (1 - \tfrac{1}{\alpha}), 1) \mid \alpha \in \ZZ_+ \} \\
+                                &= \sup\{ \epsilon (1 - \tfrac{1}{\alpha}) \mid \alpha \in \ZZ_+ \} \\
+                                &= \epsilon.
+    \end{align*}
+    %
+    Thus, $\by \not\in B_{\overline{\rho}}(\bx, \epsilon)$.
+    It follows that $U(\bx, \epsilon)$ is not equal to the $\epsilon$-ball $B_{\overline{\rho}}(\bx, \epsilon)$.
+  \end{proof}
+  \bigskip
+
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{1} 
+    \item Show that $U(\bx, \epsilon)$ is not even open in the uniform topology.
+  \end{enumerate}
+  %
+  \begin{proof}
+    Let $0 < \epsilon < 1$ and let $\by \in U(\bx, \epsilon)$ with
+    %
+    \begin{equation*}
+      y_\alpha = x_\alpha + \epsilon (1 - \tfrac{1}{\alpha})
+    \end{equation*}
+    %
+    for all $\alpha \in \ZZ_+$.
+    Now fix $0 < \delta < \epsilon$ and let $\bz \in \RR^\omega$ with
+    %
+    \begin{equation*}
+      z_\alpha = y_\alpha + \tfrac{\delta}{2} (1 - \tfrac{1}{\alpha}),
+    \end{equation*}
+    %
+    for all $\alpha \in \ZZ_+$.
+    We then have
+    %
+    \begin{equation*}
+      \overline{\rho}(\by, \bz) = \sup\{ \min(\tfrac{\delta}{2} (1 - \tfrac{1}{\alpha}), 1) \mid \alpha \in \ZZ_+\} = \tfrac{\delta}{2} < \delta,
+    \end{equation*}
+    %
+    from which it follows that $\bz \in B_{\overline{\rho}}(\by, \delta)$.
+
+    Now consider the distance between $x_\alpha$ and $z_\alpha$ for $\alpha > 1 + 2 \epsilon / \delta$.
+    We have
+    %
+    \begin{equation*}
+      \abs{x_\alpha - z_\alpha} = \left(\epsilon + \tfrac{\delta}{2}\right) \left(1 - \tfrac{1}{\alpha}\right) > \left(\epsilon + \tfrac{\delta}{2}\right) \left(1 - \frac{1}{1 + 2 \epsilon / \delta}\right) = \epsilon,
+    \end{equation*}
+    %
+    so that $\bz \not\in U(\bx, \epsilon)$ and, hence, $B_{\overline{\rho}}(\by, \delta) \not\subset U(\bx, \epsilon)$.
+    Then $\by$ is a point in $U(\bx, \epsilon)$ for which there is no open neighborhood contained in $U(\bx, \epsilon)$.
+    Thus, $U(\bx, \epsilon)$ is not closed in the uniform topology.
+  \end{proof}
+  \bigskip
+
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{2} 
+    \item Show that
+      %
+      \begin{equation*}
+        B_{\overline{\rho}}(\bx, \epsilon) = \bigcup_{\delta < \epsilon} U(\bx, \delta).
+      \end{equation*}
+      %
+  \end{enumerate}
+  %
+  \begin{proof}
+    Let $\by \in \bigcup_{\delta < \epsilon} U(\bx, \delta)$.
+    Then there exists $\delta < \epsilon$ such that $\by \in U(\bx, \delta)$ so that for all $\alpha \in \ZZ_+$, $\abs{x_\alpha - y_\alpha} < \delta < \epsilon$.
+    It follows that
+    %
+    \begin{equation*}
+      \overline{\rho}(\bx, \by) < \epsilon.
+    \end{equation*}
+    %
+    Thus, $\by \in B_{\overline{\rho}}(\bx, \epsilon)$ and so $\bigcup_{\delta < \epsilon} U(\bx, \delta) \subset B_{\overline{\rho}}(\bx, \epsilon)$.
+
+    Conversely, let $\by \in B_{\overline{\rho}}(\bx, \epsilon)$.
+    Then there exists $\delta \in \RR$ such that for all $\alpha \in \ZZ_+$,
+    %
+    \begin{equation*}
+      \abs{x_\alpha - y_\alpha} \leq \overline{\rho}(\bx, \by) < \delta < \epsilon \implies y_\alpha \in (x_\alpha - \delta, x_\alpha + \delta).
+    \end{equation*}
+    %
+    It follows that $\by \in U(\bx, \delta) \subset \bigcup_{\delta < \epsilon} U(\bx, \delta)$.
+    Thus, $B_{\overline{\rho}}(\bx, \epsilon) \subset \bigcup_{\delta < \epsilon} U(\bx, \delta)$ and so
+    %
+    \begin{equation*}
+      B_{\overline{\rho}}(\bx, \epsilon) = \bigcup_{\delta < \epsilon} U(\bx, \delta).
+    \end{equation*}
+    %
+  \end{proof}
+\end{solution}
+
