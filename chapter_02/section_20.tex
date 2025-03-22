@@ -979,4 +979,209 @@
     %
   \end{proof}
 \end{solution}
+\newpage
+
+%
+\begin{exercise}[ID=2.20.8]
+  Let $X$ be the subset of $\RR^\omega$ consisting of all sequences $\bx$ such that $\sum x_i^2$ converges.
+  Then the formula
+  %
+  \begin{equation*}
+    d(\bx, \by) = \left[ \sum_{i=1}^\infty (x_i - y_i)^2 \right]^{1/2}
+  \end{equation*}
+  %
+  defines a metric on $X$.
+  On $X$ we have the three topologies it inherits from the box, uniform, and product topologies on $\RR^\omega$.
+  We have also the topology given by the metric $d$, which we call the $\ell^2$\textit{-topology}.
+  %
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+      Show that on $X$, we have the inclusions
+      %
+      \begin{equation*}
+        \text{box topology} \supset \ell^2\text{-topology} \supset \text{uniform topology}.
+      \end{equation*}
+      %
+    \item
+      The set $\RR^\infty$ of all sequences that are eventually zero is contained in $X$.
+      Show that the four topologies that $\RR^\infty$ inherits as a subspace of $X$ are all distinct.
+    \item
+      The set
+      %
+      \begin{equation*}
+        H = \prod_{n\in\ZZ_+} [0, 1/n]
+      \end{equation*}
+      %
+      is contained in $X$; it is called the \textit{\textbf{Hilbert cube}}.
+      Compare the four topologies that $H$ inherits as a subspace of $X$.
+  \end{enumerate}
+\end{exercise}
+%
+\begin{solution}
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+      Show that on $X$, we have the inclusions
+      %
+      \begin{equation*}
+        \text{box topology} \supset \ell^2\text{-topology} \supset \text{uniform topology}.
+      \end{equation*}
+      %
+  \end{enumerate}
+  %
+  \begin{proof}~
+
+    \subsubsection*{$\ell^2$-topology $\supset$ uniform topology}
+    %
+    Let $\bx \in X$ and let $\epsilon > 0$ and consider the basic open set $U = X \cap B_{\overline{\rho}}(\bx, \epsilon)$ of $X$ in the topology it inherits as a subspace from the uniform topology on $\RR^\omega$.
+    Let $0 < \delta < \epsilon$ and let $\by \in B_d(\bx, \delta)$.
+    Then
+    %
+    \begin{alignat*}{2}
+      &           && \qquad \left[ \sum_{i=1}^\infty \abs{x_i - y_i}^2 \right]^{1/2} < \delta \\
+      & \implies  && \qquad \abs{x_i - y_i} < \delta,~ \forall i \in \ZZ_+ \\
+      & \implies  && \qquad \overline{\rho}(\bx, \by) \leq \delta < \epsilon,
+    \end{alignat*}
+    %
+    so that $\by \in B_{\overline{\rho}}(\bx, \epsilon)$.
+    Therefore, $B_d(\bx, \delta) \subset B_{\overline{\rho}}(\bx, \epsilon)$, from which it follows that $X \cap B_d(\bx, \delta)$ is a basic open neighborhood of $\bx$ in the $\ell^2$-topology contained in $U$.
+    Thus, $U$ is open in the $\ell^2$-topology induced by $d$, and so we have
+    %
+    \begin{equation*}
+      \ell^2\text{-topology} \supset \text{uniform topology}.
+    \end{equation*}
+
+    %
+    \subsubsection*{Box topology $\supset$ $\ell^2$-topology}
+    %
+    Let $\bx \in X$ and let $\epsilon > 0$ and consider the open ball $B_d(\bx, \epsilon)$ centered at $\bx$ with respect to the metric $d$.
+    Let $\by \in V = \prod_{i \in \ZZ_+} V_i$, where
+    %
+    \begin{equation*}
+      V_i = (x_i - \frac{\epsilon}{2^{i/2}}, x_i + \frac{\epsilon}{2^{i/2}}).
+    \end{equation*}
+    %
+    Then
+    %
+    \begin{alignat*}{2}
+      &           && \qquad \forall i \in \ZZ_+,~ \abs{x_i - y_i} < \frac{\epsilon}{2^{i/2}} \\
+      & \implies  && \qquad \sum_{i=1}^\infty \abs{x_i - y_i}^2 < \epsilon^2 \\
+      & \implies  && \qquad d(\bx, \by) < \epsilon,
+    \end{alignat*}
+    %
+    so that $\by \in B_d(\bx, \epsilon)$.
+    Therefore, $V \subset B_d(\bx, \epsilon)$.
+    As $V$ is a basic open neighborhood of $\bx$ in the box topology, $B_d(\bx, \epsilon)$ is open in the box topology.
+    Thus, we have
+    %
+    \begin{equation*}
+      \text{box topology} \supset \ell^2\text{-topology}.
+    \end{equation*}
+  \end{proof}
+  \bigskip
+
+  %
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{1} 
+    \item
+      The set $\RR^\infty$ of all sequences that are eventually zero is contained in $X$.
+      Show that the four topologies that $\RR^\infty$ inherits as a subspace of $X$ are all distinct.
+  \end{enumerate}
+  %
+  \begin{proof}
+  \end{proof}
+\end{solution}
+\newpage
+
+%
+\begin{exercise}[ID=2.20.11]
+  Show that if $d$ is a metric for $X$, then
+  %
+  \begin{equation*}
+    d'(x, y) = d(x, y) / (1 + d(x, y))
+  \end{equation*}
+  %
+  is a bounded metric that gives the topology of $X$.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    We must prove that i) $d'$ is a metric, ii) $d'$ is bounded and iii) $d'$ induces the same topology on $X$ as $d$.
+    %
+    \subsubsection*{i) $d'$ is a metric}
+    %
+    Let $x, y, z \in X$.
+    We will show 1) $d'(x, y) \geq 0$ with equality if and only if $x = y$, 2) $d(x, y) = d(y, x)$ and 3) $d(x, y) + d(y, z) \geq d(x, z)$.
+    \bigskip
+
+    \noindent 1) Suppose $x \neq y$.
+    Then
+    %
+    \begin{alignat*}{2}
+      &           && \qquad d(x, y) > 0 \\
+      & \implies  && \qquad 1 + d(x, y) > 0 \\
+      & \implies  && \qquad 1 / (1 + d(x, y)) > 0 \\
+      & \implies  && \qquad d(x, y) / (1 + d(x, y)) = d'(x, y) > 0.
+    \end{alignat*}
+    %
+    Now, suppose $x = y$.
+    Then
+    %
+    \begin{equation*}
+      d(x, y) = 0 \implies d(x, y) / (1 + d(x, y)) = d'(x, y) = 0.
+    \end{equation*}
+    %
+    Conversely, suppose $d'(x, y) = 0$.
+    Then
+    %
+    \begin{equation*}
+      d(x, y) / (1 + d(x, y)) = 0 \implies d(x, y) = 0 \implies x = y.
+    \end{equation*}
+    %
+    Thus, $d'(x, y) \geq 0$ for all $x, y \in X$ with equality if and only if $x = y$.
+    \bigskip
+
+    \noindent 2) $d'(x, y) = d(x, y) / (1 + d(x, y)) = d(y, x) / (1 + d(y, x)) = d'(y, x)$.
+    \bigskip
+
+    \noindent 3) TODO
+
+
+    \subsubsection*{ii) $d'$ is bounded}
+    %
+    Let $x, y \in X$.
+    Then
+    %
+    \begin{alignat*}{2}
+      &           && \qquad 0 \leq d(x, y) < 1 + d(x, y) \\
+      & \implies  && \qquad d(x, y) / (1 + d(x, y)) = d'(x, y) < 1.
+    \end{alignat*}
+    %
+    Thus, $d'(x, y)$ is bounded.
+
+    \subsubsection*{iii) $d'$ induces the same topology on $X$ as $d$}
+    %
+    Let $x \in X$ and $\epsilon > 0$.
+
+    Fixing $\delta = \epsilon / (1 + \epsilon)$, for $y \in B_{d'}(x, \delta)$ we have
+    %
+    \begin{alignat*}{2}
+      &           && \qquad d'(x, y) = d(x, y) / (1 + d(x, y)) < \delta \\
+      & \implies  && \qquad d(x, y) < \delta / (1 - \delta) = \epsilon.
+    \end{alignat*}
+    %
+    Thus, $y \in B_d(x, \epsilon)$ and so $B_{d'}(x, \delta) \subset B_d(x, \epsilon)$.
+    It follows that the topology induced on $X$ by $d'$ is finer than the topology induced by $d$.
+
+    Conversely, fixing $\delta = \epsilon$, for $y \in B_d(x, \delta)$ we have
+    %
+    \begin{alignat*}{2}
+      &           && \qquad 0 \leq d(x, y) < \delta \\
+      & \implies  && \qquad d(x, y) / (1 + d(x, y)) = d'(x, y) < \delta = \epsilon.
+    \end{alignat*}
+    %
+    Thus, $y \in B_{d'}(x, \epsilon)$ and so $B_d(x, \delta) \subset B_{d'}(x, \epsilon)$.
+    It follows that the topology induced on $X$ by $d$ is finer than the topology induced by $d'$.
+    Therefore, the topologies induced on $X$ by $d$ and by $d'$ are equivalent.
+  \end{proof}
+\end{solution}
 
