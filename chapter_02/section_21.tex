@@ -1,0 +1,249 @@
+\subsection{The Metric Topology (continued)}
+
+\begin{exercise}[ID=2.21.1]
+  Let $A \subset X$.
+  If $d$ is a metric for the topology of $X$, show that $\restr{d}{A \times A}$ is a metric for the subspace topology on $A$.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    Since $\restr{d}{A \times A}$ coincides with $d$ on $A$, it immediately satisfies the metric axioms.
+    It remains to show that its corresponding metric topology on $A$ is the same as the topology on $A$ as a subspace of $X$.
+
+    Let $B_d(x, \epsilon)$ be an open ball in $X$ centered at some point $x \in A \subset X$ with $\epsilon > 0$.
+    Let $U = A \cap B_d(x, \epsilon)$ be a basic open set in the subspace topology on $A$.
+    Then the open ball $B_{\restr{d}{A \times A}}(x, \epsilon)$ in the metric topology on $A$ induced by $\restr{d}{A \times A}$ satisfies
+    %
+    \begin{align*}
+      B_{\restr{d}{A \times A}}(x, \epsilon) &= \{ y \in X \mid \restr{d}{A \times A}(x, y) < \epsilon \} \\
+                                    &= \{ y \in A \mid d(x, y) < \epsilon \} \\
+                                    &= A \cap B_d(x, \epsilon) \\
+                                    &= U
+    \end{align*}
+    %
+    and is, thus, open in the subspace topology on $A$.
+    It follows that the metric topology on $A$ induced by $\restr{d}{A \times A}$ is finer than the subspace topology on $A$.
+    
+    Conversely, given an open ball $B_{\restr{d}{A \times A}}(x, \epsilon)$ in the metric topology on $A$ centered at some point $x \in A$ with $\epsilon > 0$, we can always write
+    %
+    \begin{equation*}
+      A \cap B_d(x, \epsilon) = B_{\restr{d}{A \times A}}(x, \epsilon),
+    \end{equation*}
+    %
+    showing that it is in fact a basic open set in the subspace topology on $A$.
+    It follows that the subspace topology on $A$ is finer than the metric topology on $A$ induced by $\restr{d}{A \times A}$.
+    Thus, the topologies are equivalent and so $\restr{d}{A \times A}$ is a metric for the subspace topology on $A$.
+  \end{proof}
+\end{solution}
+\newpage
+
+
+\begin{exercise}[ID=2.21.2]
+  Let $X$ and $Y$ be metric spaces with metrics $d_X$ and $d_Y$, respectively.
+  Let $f: X \rightarrow Y$ have the property that for every pair of points $x_1, x_2$ of $X$,
+  %
+  \begin{equation*}
+    d_Y(f(x_1), f(x_2)) = d_X(x_1, x_2).
+  \end{equation*}
+  %
+  Show that $f$ is an imbedding.
+  It is called an \textit{\textbf{isometric imbedding}} of $X$ in $Y$.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    Let $Z$ denote the iamge set $f(X)$, considered as a subspace of $Y$.
+    We wish to show that the function $f': X \rightarrow Z$ obtained by restricting the range of $f$ is a homeomorphism, \textit{i.e.}, it is a continuous bijective function with continuous inverse.
+    In the following, let $d_Z = \restr{d_Y}{f(X) \times f(X)}$.
+
+    \subsubsection*{$f'$ is a bijection}
+    %
+    Let $x_1, x_2 \in X$.
+    Then
+    %
+    \begin{equation*}
+      x_1 \neq x_2 \implies d_Z(f'(x_1), f'(x_2)) = d_X(x_1, x_2) > 0 \implies  f'(x_1) \neq f'(x_2).
+    \end{equation*}
+    %
+    Thus, $f'$ is injective.
+
+    By definition, $f'$ is a surjective function from $X$ to $Z$, thus, it is a bijection.
+
+    \subsubsection*{$f'$ is continuous}
+    %
+    Let $x_1 \in X$ and $\epsilon > 0$.
+    Then for $\delta = \epsilon$,
+    %
+    \begin{alignat*}{2}
+      d_X(x_1, x_2) < \delta \implies d_Z(f'(x_1), f'(x_2)) = d_X(x_1, x_2) < \epsilon.
+    \end{alignat*}
+    %
+    Thus, $f'$ is continuous.
+
+    \subsubsection*{$f^{\prime -1}$ is continuous}
+    %
+    Let $y_1 \in Z$ and $\epsilon > 0$.
+    We show that for $\delta = \epsilon$,
+    %
+    \begin{equation*}
+      d_Z(y_1, y_2) < \delta \implies d_X(f^{\prime -1}(y_1), f^{\prime -1}(y_2)) < \epsilon.
+    \end{equation*}
+    %
+    Since $f'$ is a bijection, there exist $x_1, x_2 \in X$ such that $y_1 = f'(x_1)$ and $y_2 = f'(x_2)$.
+    Then for $d_Z(y_1, y_2) < \delta$ we have
+    %
+    \begin{equation*}
+      d_X(f^{\prime -1}(y_1), f^{\prime -1}(y_2)) = d_X(x_1, x_2) = d_Z(f'(x_1), f'(x_2)) = d_Z(y_1, y_2) < \epsilon.
+    \end{equation*}
+    %
+    It follows that $f^{\prime -1}$ is continuous and so $f'$ is a homeomorphism.
+    Thus, $f$ is an imbedding of $X$ in $Y$.
+  \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.21.3]
+  Let $X_n$ be a metric space with metric $d_n$, for $n \in \ZZ_+$.
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+      Show that
+      %
+      \begin{equation*}
+        \rho(x, y) = \max\{ d_1(x_1, y_1), \ldots, d_n(x_n, y_n) \}
+      \end{equation*}
+      %
+      is a metric for the product space $X_1 \times \cdots \times X_n$.
+    \item
+      Let $\overline{d}_i = \min\{ d_i, 1 \}$.
+      Show that
+      %
+      \begin{equation*}
+        D(x, y) = \sup\{ \overline{d}_i(x_i, y_i) / i \}
+      \end{equation*}
+      %
+      is a metric for the product space $\prod X_i$.
+  \end{enumerate}
+\end{exercise}
+%
+\begin{solution}
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+      Show that
+      %
+      \begin{equation*}
+        \rho(x, y) = \max\{ d_1(x_1, y_1), \ldots, d_n(x_n, y_n) \}
+      \end{equation*}
+      %
+      is a metric for the product space $X_1 \times \cdots \times X_n$.
+  \end{enumerate}
+  \begin{proof}~
+
+    \subsubsection*{$\rho$ as a metric on the product space}
+    %
+    We begin by showing that $\rho$ satisfies the criteria of a metric.
+    Let $x, y, z \in X_1 \times \cdots \times X_n$.
+    \bigskip
+
+    \noindent 1. Since for all $i \in \{1, \ldots, n\}$, $d_i$ is a metric, we have that
+    %
+    \begin{equation*}
+      d_i(x_i, y_i) \geq 0
+    \end{equation*}
+    %
+    with equality if and only if $x_i = y_i$.
+    It immediately follows that $\rho(x, y) = 0$ if and only if $x_i = y_i$ for all $i \in \{1, \ldots, n\}$, which is true if $x = y$.
+
+    Suppose, instead, that $x \neq y$.
+    Then there exists $i \in \{1, \ldots, n\}$ such that $x_i \neq y_i$.
+    It follows that $d_i(x_i, y_i) > 0$ and so $\rho(x, y) \geq d_i(x_i, y_i) > 0$.
+
+    Thus, $\rho(x, y) \geq 0$ with equality if and only if $x = y$.
+    \bigskip
+
+    \noindent 2. For all $i \in \{1, \ldots, n\}$,
+    %
+    \begin{equation*}
+      d_i(x_i, y_i) = d_i(y_i, x_i).
+    \end{equation*}
+    %
+    Thus,
+    %
+    \begin{align*}
+      \rho(x, y)  &= \max\{ d_1(x_1, y_1), \ldots, d_n(x_n, y_n) \} \\
+                  &= \max\{ d_1(y_1, x_1), \ldots, d_n(y_n, x_n) \} \\
+                  &= \rho(y, x).
+    \end{align*}
+    %
+    \bigskip
+
+    \noindent 3. Since for all $i \in \{1, \ldots, n\}$,
+    %
+    \begin{equation*}
+      d_i(x_i, z_i) \leq d_i(x_i, y_i) + d_i(y_i, z_i)
+    \end{equation*}
+    %
+    it follows that
+    %
+    \begin{align*}
+      \rho(x, z)  &= \max\{ d_i(x_i, z_i) \mid i \in \{1, \ldots, n\} \} \\
+                  &\leq \max\{ d_i(x_i, y_i) + d_i(y_i, z_i) \mid i \in \{1, \ldots, n\} \} \\
+                  &\leq \max\{ d_i(x_i, y_i) \mid i \in \{1, \ldots, n\} \} + \max\{ d_i(y_i, z_i) \mid i \in \{1, \ldots, n\} \} \\
+                  &= \rho(x, y) + \rho(y, z).
+    \end{align*}
+    %
+
+    \subsubsection*{Equivalence of metric and product topologies}
+    %
+    Let $x \in X_1 \times \cdots \times X_n$ and let $U = \prod_i U_i$ be a basic open neighborhood of $x$ in the product topology, with $U_i = B_{d_i}(x_i, \epsilon_i)$ and $\epsilon_i > 0$, for all $i \in \{1, \ldots, n\}$.
+    Let $\delta = \min\{\epsilon_1, \ldots, \epsilon_n\}$ and consider $y \in B_\rho(x, \delta)$.
+    Then
+    %
+    \begin{alignat*}{2}
+      &           && \rho(x, y) < \delta \\
+      & \implies  && \max\{ d_i(x_i, y_i) \mid i \in \{1, \ldots, n\} \} < \delta \\
+      & \implies  && \forall i \in \{1, \ldots, n\},~ d_i(x_i, y_i) < \delta \\
+      & \implies  && \forall i \in \{1, \ldots, n\},~ y_i \in B_{d_i}(x_i, \delta).
+    \end{alignat*}
+    %
+    Since for all $i \in \{1, \ldots, n\}$, $\delta \leq \epsilon_i$, we have that $B_{d_i}(x_i, \delta) \subset B_{d_i}(x_i, \epsilon_i)$.
+    It follows that $y \in U$ and so $B_\rho(x, \delta) \subset U$.
+    Thus, the metric topology induced by $\rho$ is finer than the product topology on $X_1 \times \cdots \times X_n$.
+
+    Conversely, let $x \in X_1 \times \cdots \times X_n$ and let $B_\rho(x, \epsilon)$, with $\epsilon > 0$, be a basic open neighborhood of $x$ in the metric topology induced by $\rho$.
+    Let $\delta = \epsilon$ and consider $y \in U = \prod_i U_i$ with $U_i = B_{d_i}(x_i, \delta)$ for all $i \in \{1, \ldots, n\}$.
+    Then
+    %
+    \begin{alignat*}{2}
+      &           && \forall i \in \{1, \ldots, n\},~ d_i(x_i, y_i) < \delta \\
+      & \implies  && \rho(x, y) = \max\{ d_i(x_i, y_i) \mid i \in \{1, \ldots, n\} \} < \delta. 
+    \end{alignat*}
+    %
+    It follows that $y \in B_\rho(x, \delta) = B_\rho(x, \epsilon)$ and so $U \subset B_\rho(x, \epsilon)$.
+    Thus, the product topology is finer than the metric topology induced by $\rho$ on $X_1 \times \cdots \times X_n$.
+    Therefore, the metric topology induced by $\rho$ and the product topology on $X_1 \times \cdots \times X_n$ are equivalent.
+  \end{proof}
+  \bigskip
+
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{1} 
+    \item
+      Let $\overline{d}_i = \min\{ d_i, 1 \}$.
+      Show that
+      %
+      \begin{equation*}
+        D(x, y) = \sup\{ \overline{d}_i(x_i, y_i) / i \}
+      \end{equation*}
+      %
+      is a metric for the product space $\prod X_i$.
+  \end{enumerate}
+  \begin{proof}~
+
+    \subsubsection*{$D$ as a metric on the product space}
+    %
+    We begin by showing that $D$ satisfies the criteria of a metric.
+
+    \subsubsection*{Equivalence of metric and product topologies}
+    %
+  \end{proof}
+\end{solution}
+
