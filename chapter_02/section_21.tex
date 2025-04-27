@@ -151,7 +151,7 @@
     \end{equation*}
     %
     with equality if and only if $x_i = y_i$.
-    It immediately follows that $\rho(x, y) = 0$ if and only if $x_i = y_i$ for all $i \in \{1, \ldots, n\}$, which is true if $x = y$.
+    It immediately follows that $\rho(x, y) = 0$ if and only if $x_i = y_i$ for all $i \in \{1, \ldots, n\}$, which is true only if $x = y$.
 
     Suppose, instead, that $x \neq y$.
     Then there exists $i \in \{1, \ldots, n\}$ such that $x_i \neq y_i$.
@@ -173,7 +173,6 @@
                   &= \max\{ d_1(y_1, x_1), \ldots, d_n(y_n, x_n) \} \\
                   &= \rho(y, x).
     \end{align*}
-    %
     \bigskip
 
     \noindent 3. Since for all $i \in \{1, \ldots, n\}$,
@@ -219,8 +218,8 @@
     \end{alignat*}
     %
     It follows that $y \in B_\rho(x, \delta) = B_\rho(x, \epsilon)$ and so $U \subset B_\rho(x, \epsilon)$.
-    Thus, the product topology is finer than the metric topology induced by $\rho$ on $X_1 \times \cdots \times X_n$.
-    Therefore, the metric topology induced by $\rho$ and the product topology on $X_1 \times \cdots \times X_n$ are equivalent.
+    Therefore, the product topology is finer than the metric topology induced by $\rho$ on $X_1 \times \cdots \times X_n$.
+    Thus, the topologies are equivalent and so $\rho$ is a metric for the product space $X_1 \times \cdots \times X_n$.
   \end{proof}
   \bigskip
 
@@ -241,9 +240,124 @@
     \subsubsection*{$D$ as a metric on the product space}
     %
     We begin by showing that $D$ satisfies the criteria of a metric.
+    Let $x, y, z \in \prod_i X_i$.
+    \bigskip
+
+    \noindent 1. Since for all $i \in \{1, \ldots, n\}$, $\overline{d}_i$ is a metric, we have that
+    %
+    \begin{equation*}
+      \overline{d}_i(x_i, y_i) \geq 0
+    \end{equation*}
+    %
+    with equality if and only if $x_i = y_i$.
+    Since $D(x, y) \geq \overline{d}_i(x_i, y_i)$ for all $i \in \ZZ_+$, it follows that $D(x, y) \geq 0$ and, furthermore, that $D(x, y) = 0$ if and only only if $x_i = y_i$ for all $i \in \ZZ_+$, which is true if $x = y$.
+
+    Thus, $D(x, y) \geq 0$ with equality if and only if $x = y$.
+    \bigskip
+
+    \noindent 2. For all $i \in \ZZ_+$,
+    %
+    \begin{equation*}
+      \overline{d}_i(x_i, y_i) = \overline{d}_i(y_i, x_i).
+    \end{equation*}
+    %
+    Thus,
+    %
+    \begin{align*}
+      D(x, y) &= \sup\{\overline{d}_i(x_i, y_i) / i \mid i \in \ZZ_+\} \\
+              &= \sup\{\overline{d}_i(y_i, x_i) / i \mid i \in \ZZ_+\} \\
+              &= D(y, x)
+    \end{align*}
+    \bigskip
+
+    \noindent 3. Since for all $i \in \ZZ_+$,
+    %
+    \begin{equation*}
+      \overline{d}_i(x_i, z_i) \leq \overline{d}_i(x_i, y_i) + \overline{d}_i(y_i, z_i)
+    \end{equation*}
+    %
+    it follows that
+    %
+    \begin{align*}
+      D(x, z) &= \sup\{\overline{d}_i(x_i, z_i) / i \mid i \in \ZZ_+\} \\
+              &\leq \sup\{\overline{d}_i(x_i, y_i) / i + \overline{d}_i(y_i, z_i) / i \mid i \in \ZZ_+\} \\
+              &\leq \sup\{\overline{d}_i(x_i, y_i) / i \mid i \in \ZZ_+\} + \sup\{\overline{d}_i(y_i, z_i) / i \mid i \in \ZZ_+\} \\
+              &= D(x, y) + D(y, z).
+    \end{align*}
+    %
 
     \subsubsection*{Equivalence of metric and product topologies}
     %
+    Let $x \in \prod X_i$ and let $U = \prod U_i$ be a basic open neighborhood of $x$ in the product topology, with
+    %
+    \begin{equation*}
+      U_i = B_{d_i}(x_i, \epsilon_i),
+    \end{equation*}
+    %
+    $\epsilon_i > 0$, for finitely many $i \in J \subset \ZZ_+$, and $U_i = \RR$ otherwise.
+
+    Define $\tilde{\epsilon} := \min\{\epsilon_i \mid i \in J\}$ and $i_0 := \max{J}$.
+    Let $\delta = \min(\tilde{\epsilon} / i_0,~ 1)$ and consider $y \in B_D(x, \delta)$.
+    Then for all $i \in J$,
+    %
+    \begin{equation*}
+      \begin{alignedat}{2}
+        &           && \min\big(d_i(x_i, y_i),~ 1) / i < \tilde{\epsilon} / i_0 \\
+        & \implies  && \min\big(d_i(x_i, y_i),~ 1) <  (i / i_0)~ \tilde{\epsilon} \\
+        & \implies  && \min\big(d_i(x_i, y_i),~ 1) <  \tilde{\epsilon},
+      \end{alignedat}
+    \end{equation*}
+    %
+    since, by definition, $i \leq i_0$.
+    Furthermore, since by definition $\tilde{\epsilon} \leq \epsilon_i$, we have that
+    %
+    \begin{equation*}
+      \begin{alignedat}{2}
+        &           && \min\big(d_i(x_i, y_i),~ 1) < \epsilon_i \\
+        & \implies  && d_i(x_i, y_i) < \epsilon_i,
+      \end{alignedat}
+    \end{equation*}
+    from which it we see that $y_i \in B_{d_i}(x, \epsilon_i) = U_i$.
+    For $i \not\in J$, we further have that $y_i \in \RR = U_i$.
+    It follows that $y \in U$ and so $B_D(x, \delta) \subset U$.
+    Thus, the metric topology induced by $D$ is finer than the product topology on $\prod X_i$.
+
+    Conversely, let $x \in \prod X_i$ and let $B_D(x, \epsilon)$, with $\epsilon > 0$, be a basic open neighborhood of $x$ in the metric topology induced by $D$.
+    For any $\epsilon > 0$, there exists a positive integer $N$ such that for all $i \geq N$, $i \epsilon > 1$.
+
+    Let $y \in U = \prod U_i$, where $U_i = B_{d_i}(x_i, \delta_i)$ with $\delta_i = i \epsilon$ for $i \in J = \{1, \ldots, N + 1\}$, and $U_i = \RR$ for i $\not\in J$.
+    Then for all $i \in J$,
+    %
+    \begin{equation*}
+      \begin{alignedat}{2}
+        &           && d_i(x_i, y_i) < i \epsilon \\
+        & \implies  && \overline{d}_i(x_i, y_i) < i \epsilon \\
+        & \implies  && \overline{d}_i(x_i, y_i) / i < \epsilon.
+      \end{alignedat}
+    \end{equation*}
+    %
+    Since $J$ is finite, $\sup\{\overline{d}_i(x_i, y_i) / i\} = \max\{\overline{d}_i(x_i, y_i) / i\} < \epsilon$.
+    For $i \not\in J$, we have that $i \geq N$ and so
+    %
+    \begin{equation*}
+        \overline{d}_i(x_i, y_i) \leq 1 < i \epsilon
+    \end{equation*}
+    %
+    since $N$ was chosen such that $i \epsilon > 1$.
+    Therefore,
+    %
+    \begin{equation*}
+      \overline{d}_i(x_i, y_i) / i \leq 1 / i < \epsilon,
+    \end{equation*}
+    from which we see that
+    %
+    \begin{equation*}
+      \sup\{\overline{d}_i(x_i, y_i) / i\} \leq 1 / i < \epsilon.
+    \end{equation*}
+    %
+    It follows that $y \in B_D(x, \epsilon)$ and so $U \subset B_D(x, \epsilon)$.
+    Therefore, the product topology is finer than the metric topology induced by $D$ on $\prod X_i$.
+    Thus, the topologies are equivalent and so $D$ is a metric for the product space $\prod X_i$.
   \end{proof}
 \end{solution}
 
