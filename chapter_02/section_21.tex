@@ -360,4 +360,46 @@
     Thus, the topologies are equivalent and so $D$ is a metric for the product space $\prod X_i$.
   \end{proof}
 \end{solution}
+\newpage
 
+\begin{exercise}[ID=2.21.5]
+  \textit{Theorem.} Let $x_n \rightarrow x$ and $y_n \rightarrow y$ in the space $\RR$.
+  Then
+  %
+  \begin{gather*}
+    x_n + y_n \rightarrow x + y, \\
+      x_n - y_n \rightarrow x - y, \\
+      x_n y_n \rightarrow x y,
+  \end{gather*}
+  %
+  and provided that each $y_n \neq 0$ and $y \neq 0$,
+  %
+  \begin{equation*}
+    x_n / y_n \rightarrow x / y.
+  \end{equation*}
+  %
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    Let $f: \RR \times \RR \rightarrow \RR$ be any of the above arithmetic operations and assume that in the case that $f$ is division, then $y_n \neq 0$ for all $n$ and that $y \neq 0$.
+    Let $U \subset \RR$ be an arbitrary open set containing $f(x, y)$.
+    By Lemma 2.21.4, $f: \RR \times \RR \rightarrow \RR$ is a continuous function.
+    Thus, we have that $f\inv(U)$ is open in $\RR \times \RR$.
+    From Section 2.19 we have seen that if $x_n \rightarrow x$ and $y_n \rightarrow y$, then $(x_n, y_n) \rightarrow (x, y)$.
+    Therefore, since $f\inv(U)$ is an open neighborhood of $(x, y)$, there exists $N \in \ZZ_+$ such that $\forall n \geq N$, $(x_n, y_n) \in f\inv(U)$.
+    It follows that $\forall n \geq N$, $f(x_n, y_n) \in U$.
+    Thus, $f(x_n, y_n) \rightarrow f(x, y)$.
+  \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.21.6]
+  Define $f_n: [0, 1] \rightarrow \RR$ by the equation $f_n(x) = x^n$.
+  Show that the sequence $(f_n(x))$ converges for each $x \in [0, 1]$, but that the sequence $(f_n)$ does not converge uniformly.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+  \end{proof}
+\end{solution}
