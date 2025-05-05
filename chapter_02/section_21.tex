@@ -360,4 +360,102 @@
     Thus, the topologies are equivalent and so $D$ is a metric for the product space $\prod X_i$.
   \end{proof}
 \end{solution}
+\newpage
 
+\begin{exercise}[ID=2.21.5]
+  \textit{Theorem.} Let $x_n \rightarrow x$ and $y_n \rightarrow y$ in the space $\RR$.
+  Then
+  %
+  \begin{gather*}
+    x_n + y_n \rightarrow x + y, \\
+      x_n - y_n \rightarrow x - y, \\
+      x_n y_n \rightarrow x y,
+  \end{gather*}
+  %
+  and provided that each $y_n \neq 0$ and $y \neq 0$,
+  %
+  \begin{equation*}
+    x_n / y_n \rightarrow x / y.
+  \end{equation*}
+  %
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    Let $f: \RR \times \RR \rightarrow \RR$ be any of the above arithmetic operations and assume that in the case that $f$ is division, then $y_n \neq 0$ for all $n$ and that $y \neq 0$.
+    Let $U \subset \RR$ be an arbitrary open set containing $f(x, y)$.
+    By Lemma 2.21.4, $f: \RR \times \RR \rightarrow \RR$ is a continuous function.
+    Thus, we have that $f\inv(U)$ is open in $\RR \times \RR$.
+    From Section 2.19 we have seen that if $x_n \rightarrow x$ and $y_n \rightarrow y$, then $(x_n, y_n) \rightarrow (x, y)$.
+    Therefore, since $f\inv(U)$ is an open neighborhood of $(x, y)$, there exists $N \in \ZZ_+$ such that $\forall n \geq N$, $(x_n, y_n) \in f\inv(U)$.
+    It follows that $\forall n \geq N$, $f(x_n, y_n) \in U$.
+    Thus, $f(x_n, y_n) \rightarrow f(x, y)$.
+  \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=2.21.6]
+  Define $f_n: [0, 1] \rightarrow \RR$ by the equation $f_n(x) = x^n$.
+  Show that the sequence $(f_n(x))$ converges for each $x \in [0, 1]$, but that the sequence $(f_n)$ does not converge uniformly.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}~
+    \subsubsection*{Pointwise convergence of $(f_n(x))$}
+    %%
+    Let $0 \leq x < 1$ and let $\epsilon > 0$.
+    Since we have seen in Section 1.4 that for $0 \leq x < 1$, $\inf\{x^n \mid n \in \ZZ_+\} = 0$, it cannot be that $\epsilon$ is a lower bound for $a^n$.
+    It follows that $\exists N \in \ZZ^+$ such that $0 \leq x^N < \epsilon$.
+    Since $0 \leq x < 1$, for any $n \geq N$, we have that $0 \leq x^n \leq x^N < \epsilon$.
+    Thus, there exists an $N \in \ZZ_+$ such that for all $n \geq N$, $x^n \in [0, \epsilon)$.
+    Since $[0, \epsilon)$ is an arbitrary basic open set containing 0, we have that $f_n(x) = x^n$ converges to 0 for $0 \leq x < 1$.
+
+    Consider now the case where $x = 1$.
+    Then for all $n \geq 1$, $x^n = 1$ is contained in any basic open set $(b, 1]$, $0 \leq b < 1$, which contains 1.
+    Thus, $f_n(x)$ converges to 1 for $x = 1$.
+    Therefore, $(f_n(x))$ converges for each $x \in [0, 1]$.
+    In particular,
+    %
+    \begin{equation*}
+      (f_n(x)) \rightarrow
+      \begin{cases}
+        0 & \text{if } 0 \leq x < 1, \\
+        1 & \text{if } x = 1.
+      \end{cases}
+    \end{equation*}
+    %
+
+    \subsubsection*{Failure of uniform convergence of $(f_n)$}
+    %
+    We will show that given $\epsilon > 0$, there exists no positive integer $N$ such that $d(f_n(x), f(x)) < \epsilon$ for all $n \geq N$ and all $x \in [0, 1]$, where
+    %
+    \begin{equation*}
+      f(x) =
+      \begin{cases}
+        0 & \text{if } 0 \leq x < 1, \\
+        1 & \text{if } x = 1.
+      \end{cases}
+    \end{equation*}
+    %
+    In particular, we will show that for any $\epsilon > 0$ and any $N \in \ZZ_+$, there exists $x \in [0, 1)$ such that $d(f_N(x), f(x) \geq \epsilon$.
+    We proceed by showing that $\sup\{x^N \mid x \in [0, 1)\} = 1$ for all $N \in \ZZ_+$.
+
+    For all $x \in [0, 1)$, $x < 1 \implies x^N < 1^N = 1$.
+    Thus, 1 is indeed an upper bound for $\{x^N \mid x \in [0, 1)\}$.
+    To show that 1 is the \textit{least} upper bound, consider as a potential upper bound $1 - \epsilon$ with $\epsilon > 0$.
+    If we choose $\epsilon \geq 1$, we have that $1 - \epsilon \leq 0 \leq x^N$ for any $x \in [0, 1)$.
+    Thus, in this case $1 - \epsilon$ does not furnish an upper bound for our set.
+    Choosing instead $0 < \epsilon < 1$ and letting $\delta = \epsilon / N$, we consider $x = 1 - \delta \in [0, 1)$.
+    In Section 1.4 we have seen that for $0 < \delta < 1$, $(1 - \delta)^N \geq 1 - N \delta$.
+    It follows that
+    %
+    \begin{equation*}
+      x^N \geq 1 - N \delta = 1 - \epsilon.
+    \end{equation*}
+    %
+    Thus, we find that $\sup\{x^N \mid x \in [0, 1)\} = 1$.
+
+    It follows that $\forall \epsilon \in [0, 1)$, $\forall N \in \ZZ_+$, $\exists x \in [0, 1)$ such that $d(f_N(x), f(x)) = \abs{x^N} > \epsilon$.
+    Thus, $(f_n)$ does not converge uniformly to $f$.
+  \end{proof}
+\end{solution}
