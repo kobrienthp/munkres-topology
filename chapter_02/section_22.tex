@@ -68,51 +68,132 @@
   Show that $q$ is a quotient map that is neither open nor closed.
 \end{exercise}
   %
-  \begin{solution}
-    \begin{proof}~
+\begin{solution}
+  \begin{proof}~
 
-      \subsubsection*{$q$ is a quotient map}
-      %
-      Given any real number $x$, we have the point $x \times 0 \in A$, the image of which under $q$ is equal to $x$.
-      Thus, $q$ is surjective.
+    \subsubsection*{$q$ is a quotient map}
+    %
+    Given any real number $x$, we have the point $x \times 0 \in A$, the image of which under $q$ is equal to $x$.
+    Thus, $q$ is surjective.
 
-      Since the projection $\pi_1$ is continuous, so too is its restriction $q$ to the subspace $A$.
-      Thus, it remains to be shown that any set $U \subset \RR$ with a preimage $q\inv(U)$ open in $A$ must itself be open in $\RR$.
-      Let $U$ be a subset of $\RR$ with a preimage $q\inv(U)$ open in $A$.
-      Let $x \in U$ and note that $x \times 0 \in q\inv(\{x\}) \subset q\inv(U)$.
-      Since $q\inv(U)$ is open by hypothesis, it follows that there exists an $\epsilon > 0$ such that $V = \big(B(x, \epsilon) \times B(0, \epsilon)\big) \cap A$ is an open neighborhood of $x \times 0$ contained in $q\inv(U)$.
-      Now
-      %
-      \begin{align*}
-        q(V)  &= q\Big(\big(B(x, \epsilon) \times \{0\}\big) \cup \big(B(x, \epsilon) \cap [0, \infty) \times B(0, \epsilon)\big)\Big) \\
-              &= q\Big(\big(B(x, \epsilon) \times \{0\}\big)\Big) \cup q\Big(\big(B(x, \epsilon) \cap [0, \infty) \times B(0, \epsilon)\big)\Big) \\
-              &= B(x, \epsilon) \cup \big(B(x, \epsilon) \cap [0, \infty)\big) \\
-              &= B(x, \epsilon)
-      \end{align*}
-      %
-      is open in $\RR$.
-      Since $V \subset q\inv(U)$, the image set $q(V)$ is an open neighborhood of $x$ contained in $U$.
-      As $x$ was chosen arbitrarily, it follows that $U$ is open and, thus, $q$ is a quotient map from $A$ to $\RR$.
-      \bigskip
+    Since the projection $\pi_1$ is continuous, so too is its restriction $q$ to the subspace $A$.
+    Thus, it remains to be shown that any set $U \subset \RR$ with a preimage $q\inv(U)$ open in $A$ must itself be open in $\RR$.
+    Let $U$ be a subset of $\RR$ with a preimage $q\inv(U)$ open in $A$.
+    Let $x \in U$ and note that $x \times 0 \in q\inv(\{x\}) \subset q\inv(U)$.
+    Since $q\inv(U)$ is open by hypothesis, it follows that there exists an $\epsilon > 0$ such that $V = \big(B(x, \epsilon) \times B(0, \epsilon)\big) \cap A$ is an open neighborhood of $x \times 0$ contained in $q\inv(U)$.
+    Now
+    %
+    \begin{align*}
+      q(V)  &= q\Big(\big(B(x, \epsilon) \times \{0\}\big) \cup \big(B(x, \epsilon) \cap [0, \infty) \times B(0, \epsilon)\big)\Big) \\
+            &= q\Big(\big(B(x, \epsilon) \times \{0\}\big)\Big) \cup q\Big(\big(B(x, \epsilon) \cap [0, \infty) \times B(0, \epsilon)\big)\Big) \\
+            &= B(x, \epsilon) \cup \big(B(x, \epsilon) \cap [0, \infty)\big) \\
+            &= B(x, \epsilon)
+    \end{align*}
+    %
+    is open in $\RR$.
+    Since $V \subset q\inv(U)$, the image set $q(V)$ is an open neighborhood of $x$ contained in $U$.
+    As $x$ was chosen arbitrarily, it follows that $U$ is open and, thus, $q$ is a quotient map from $A$ to $\RR$.
+    \bigskip
 
-      \subsubsection*{$q$ is neither open nor closed}
-      %
-      Let $0 < \epsilon < 1$ and consider the subset $U = \big(B(0, \epsilon) \times B(1, \epsilon)\big) \cap A = [0, \epsilon) \times B(1, \epsilon)$ of $A$.
-      By construction, $U$ is open in $A$.
-      However, $q(U) = [0, \epsilon)$ is not open in $\RR$.
-      Thus, $q$ is not an open map.
+    \subsubsection*{$q$ is neither open nor closed}
+    %
+    Let $0 < \epsilon < 1$ and consider the subset $U = \big(B(0, \epsilon) \times B(1, \epsilon)\big) \cap A = [0, \epsilon) \times B(1, \epsilon)$ of $A$.
+    By construction, $U$ is open in $A$.
+    However, $q(U) = [0, \epsilon)$ is not open in $\RR$.
+    Thus, $q$ is not an open map.
 
-      Consider now the continuous function $f: \RR \times \RR \rightarrow \RR$ given by $f(x, y) = x y - 1$.
-      Since $\{0\}$ is closed in $\RR$, it follows by continuiuty of $f$ that
+    Consider now the continuous function $f: \RR \times \RR \rightarrow \RR$ given by $f(x, y) = x y - 1$.
+    Since $\{0\}$ is closed in $\RR$, it follows by continuiuty of $f$ that
+    %
+    \begin{equation*}
+      f\inv(\{0\}) = \{(x, y) \in \RR \times \RR \mid x \neq 0, y = 1 / x \}
+    \end{equation*}
+    %
+    is closed in $\RR \times \RR$.
+    Then the set $C \cap A = \{(x, y) \in \RR \times \RR \mid x > 0, y = 1 / x \}$ is closed in $A$.
+    However, $q(C \cap A) = (0, \infty)$ is not closed in $\RR$.
+    Thus, $q$ is not a closed map.
+    Therefore, $q$ is a quotient map which is neither open nor closed.
+  \end{proof}
+\end{solution}
+\newpage
+
+
+\begin{exercise}[ID=2.22.4]
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+      Define an equivalence relation on the plane $X = \RR^2$ as follows:
       %
       \begin{equation*}
-        f\inv(\{0\}) = \{(x, y) \in \RR \times \RR \mid x \neq 0, y = 1 / x \}
+        x_0 \times y_0 \sim x_1 \times y_1 \qquad \text{if } x_0 + y_0^2 = x_1 + y_1^2.
       \end{equation*}
       %
-      is closed in $\RR \times \RR$.
-      Then the set $C \cap A = \{(x, y) \in \RR \times \RR \mid x > 0, y = 1 / x \}$ is closed in $A$.
-      However, $q(C \cap A) = (0, \infty)$ is not closed in $\RR$.
-      Thus, $q$ is not a closed map.
-      Therefore, $q$ is a quotient map which is neither open nor closed.
-    \end{proof}
-  \end{solution}
+      Let $X^*$ be the corresponding quotient space.
+      It is homeomorphic to a familiar space; what is it?
+    \item
+      Repeat (a) for the equivalence relation
+      %
+      \begin{equation*}
+        x_0 \times y_0 \sim x_1 \times y_1 \qquad \text{if } x_0^2 + y_0^2 = x_1^2 + y_1^2.
+      \end{equation*}
+      %
+  \end{enumerate}
+\end{exercise}
+%
+\begin{solution}
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+      Define an equivalence relation on the plane $X = \RR^2$ as follows:
+      %
+      \begin{equation*}
+        x_0 \times y_0 \sim x_1 \times y_1 \qquad \text{if } x_0 + y_0^2 = x_1 + y_1^2.
+      \end{equation*}
+      %
+      Let $X^*$ be the corresponding quotient space.
+      It is homeomorphic to a familiar space; what is it?
+
+  \end{enumerate}
+  %
+  \noindent\textbf{Claim.} $X^*$ is homeomorphic to $\RR$ with the standard topology.
+  %
+  \begin{proof}
+    Consider the map $g: X \rightarrow \RR$ given by the equation $g(x, y) = x + y^2$, which is continuous given the standard topology on $\RR$.
+    Given $z \in \RR$, one may choose any $y \in \RR$ so that the point $(z - y^2, y) \in  X$ satisfies
+    %
+    \begin{equation*}
+      g(z - y^2, y) = z - y^2 + y^2 = z.
+    \end{equation*}
+    %
+    Thus, $g$ is a surjection from $X$ onto $\RR$.
+    Furthermore, any two points $(x_0, y_0), (x_1, y_1) \in g\inv(\{z\})$ satisfy $x_0 + y_0^2 = x_1 + y_1^2 = z$, so that $X^* = \{g\inv(z) \mid z \in \RR\}$.
+    Then by Corollary 2.22.3, $g$ induces a homemorphism between $X^*$ and $\RR$.
+  \end{proof}
+  \bigskip
+
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{1} 
+    \item
+      Repeat (a) for the equivalence relation
+      %
+      \begin{equation*}
+        x_0 \times y_0 \sim x_1 \times y_1 \qquad \text{if } x_0^2 + y_0^2 = x_1^2 + y_1^2.
+      \end{equation*}
+      %
+  \end{enumerate}
+  %
+  \noindent\textbf{Claim.} $X^*$ is homeomorphic to $\overline{\RR}_+$ with the subpsace topology inherited from $\RR$.
+  %
+  \begin{proof}
+    Consider the map $g: X \rightarrow \RR$ given by the equation $g(x, y) = x^2 + y^2$, which is continuous given the standard topology on $\RR$.
+    By Theorem 2.18.2, the restriction of $g$ to the subspace $\overline{\RR}_+$ is also continuous.
+    Given $z \in \overline{\RR}_+$, one may choose any $y \in \RR$ so that the point $(\sqrt{z - y^2}, y^2) \in  X$ satisfies
+    %
+    \begin{equation*}
+      \restr{g}{\overline{\RR}_+}(\sqrt{z - y^2}, y) = z - y^2 + y^2 = z.
+    \end{equation*}
+    %
+    Thus, $\restr{g}{\overline{\RR}_+}$ is a surjection from $X$ onto $\RR$.
+    Furthermore, any two points $(x_0, y_0), (x_1, y_1) \in g\inv(\{z\})$ satisfy $x_0^2+ y_0^2 = x_1^2 + y_1^2 = z$, so that $X^* = \{\restr{g}{\overline{\RR}_+}\inv(z) \mid z \in \RR\}$.
+    Then by Corollary 2.22.3, $\restr{g}{\overline{\RR}_+}$ induces a homemorphism between $X^*$ and $\overline{\RR}_+$.
+  \end{proof}
+\end{solution}
