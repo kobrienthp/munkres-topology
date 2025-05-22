@@ -15,7 +15,7 @@
     Since $\mathcal{T}'$ is finer than $\mathcal{T}$, the sets $A$ and $B$ are also open in $\mathcal{T}'$.
     It follows that they also form a separation of $X$ in the topology $\mathcal{T}'$.
     Thus, $X$ is disconnected also in $\mathcal{T}'$.
-    It follows that if $X$ is connected in the topology $\$mathcal{T'}$, then it is connected in the topology $\mathcal{T}$.
+    It follows that if $X$ is connected in the topology $\mathcal{T'}$, then it is connected in the topology $\mathcal{T}$.
 
     Consider the case where $X$ is a two-point space and let $\mathcal{T}$ be the trivial topology on $X$.
     Since there exists only a single nonempty open set in $\mathcal{T}$, namely $X$, there exists no separation of $X$.
@@ -40,8 +40,7 @@
 
     Suppose that $A_n$ sits entirely within $U$ for some $n \in \ZZ_+$.
     As a connected subspace of $\bigcup A_n$, it must be the case that $A_{n+1}$ also lies either entirely within $U$ or $V$.
-    Since $A_n \cap A_{n+1} \neq \emptyset$, it must be that $A_{n+1}$ intersects $U$.
-    Since $U$ and $V$ are disjoint, this implies that $A_{n+1}$ lies entirely within $U$.
+    Since $A_n \cap A_{n+1} \neq \emptyset$, it must be that $A_{n+1}$ intersects $U$ and, thus, must lie entirely within $U$.
     By induction, we then have that $A_n$ is disjoint from $V$ for all $n \in \ZZ_+$.
     But then $V = V \cap \bigcup A_n = \emptyset$, which contradicts our assumption that $\bigcup A_n$ is not connected.
   \end{proof}
@@ -70,4 +69,24 @@
 \end{solution}
 \newpage
 
+\begin{exercise}[ID=3.23.4]
+  Show that if $X$ is an infinite set, it is connected in the finite complement topology.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    Suppose by way of contradiction that $X = U \cup V$ is a separation of the infinite set $X$ in the finite complement topology.
+    By definition of a separation, $U$ and $V$ are disjoint, so that
+    %
+    \begin{equation*}
+      U \cap V = (X \setminus U^c) \cap (X \setminus V^c) = X \setminus (U^c \cup V^c) = \emptyset,
+    \end{equation*}
+    %
+    where $U^c$ and $V^c$ are the complements of $U$ and $V$, respectively.
+    It follows that $U^c \cup V^c = X$.
+    As $U$ and $V$ are open sets, both $U^c$ and $V^c$ are finite, implying that their union is also finite.
+    This contradicts our assumption that $X$ is infinite, thus, $X$ must be connected in the finite complement topology.
+  \end{proof}
+\end{solution}
+\newpage
 
