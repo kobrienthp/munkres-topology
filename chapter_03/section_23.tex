@@ -1,0 +1,73 @@
+\subsection{Connected Spaces}
+
+\begin{exercise}[ID=3.23.1]
+  Let $\mathcal{T}$ and $\mathcal{T}'$ be two topologies on $X$.
+  If $\mathcal{T}' \supset \mathcal{T}$, what does connectedness of $X$ in one topology imply about connectedness in the other?
+\end{exercise}
+%
+\begin{solution}
+  \textbf{Claim.} If $X$ is connected in the topology $\mathcal{T'}$, then it is connected in the topology $\mathcal{T}$.
+  In general, connectedness of $X$ in $\mathcal{T}$ does not imply connectedness of $X$ in $\mathcal{T}'$.
+  \begin{proof}
+    We proceed by proving the contrapositive.
+    Let $X = A \cup B$ be a separation of $X$ in the topology $\mathcal{T}$ so that $X$ is disconnected in this topology.
+    By definition of a separation, $A$ and $B$ are open sets in $\mathcal{T}$.
+    Since $\mathcal{T}'$ is finer than $\mathcal{T}$, the sets $A$ and $B$ are also open in $\mathcal{T}'$.
+    It follows that they also form a separation of $X$ in the topology $\mathcal{T}'$.
+    Thus, $X$ is disconnected also in $\mathcal{T}'$.
+    It follows that if $X$ is connected in the topology $\$mathcal{T'}$, then it is connected in the topology $\mathcal{T}$.
+
+    Consider the case where $X$ is a two-point space and let $\mathcal{T}$ be the trivial topology on $X$.
+    Since there exists only a single nonempty open set in $\mathcal{T}$, namely $X$, there exists no separation of $X$.
+    In the discrete topology $\mathcal{T}'$, however, we have the separation $X = \{a\} \cup \{b\}$ of $X$, where $a \neq b$ are the two elements of $X$.
+    Since $\mathcal{T}'$ is finer than $\mathcal{T}$, it follows that connectedness in one topology does not necessarily imply connectedness in a finer topology.
+  \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=3.23.2]
+  Let $\{A_n\}$ be a sequence of connected subspaces of $X$, such that $A_n \cap A_{n+1} \neq \emptyset$ for all $n$.
+  Show that $\bigcup A_n$ is connected.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    Suppose by way of contradiction that $\bigcup A_n = U \cap V$ is a separation of $\bigcup A_n$, \ie, $U$ and $V$ are disjoint nonempty open sets whose union is $\bigcup A_n$.
+    Since for all $n \in \ZZ_+$, $A_n$ is a subspace of $X$, $\bigcup A_n$ is a subspace of $X$ and $A_n \subset \bigcup A_n$, we have that $A_n$ is a connected subspace of $\bigcup A_n$.
+    In particular, $A_1$ is a connected subspace of $\bigcup A_n$.
+    By Theorem 2.23.2, that means that $A_1$ must lie entirely within either $U$ or $V$.
+    Without loss of generality, assume that $A_1 \subset U$.
+
+    Suppose that $A_n$ sits entirely within $U$ for some $n \in \ZZ_+$.
+    As a connected subspace of $\bigcup A_n$, it must be the case that $A_{n+1}$ also lies either entirely within $U$ or $V$.
+    Since $A_n \cap A_{n+1} \neq \emptyset$, it must be that $A_{n+1}$ intersects $U$.
+    Since $U$ and $V$ are disjoint, this implies that $A_{n+1}$ lies entirely within $U$.
+    By induction, we then have that $A_n$ is disjoint from $V$ for all $n \in \ZZ_+$.
+    But then $V = V \cap \bigcup A_n = \emptyset$, which contradicts our assumption that $\bigcup A_n$ is not connected.
+  \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=3.23.3]
+  Let $\{A_\alpha\}$ be a collection of connected subspaces of $X$;
+  let $A$ be a connected subspace of $X$.
+  Show that if $A \cap A_\alpha \neq \emptyset$ for all $\alpha$, then $A \cup \left(\bigcup A_\alpha\right)$ is connected.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    Let $\{B_\alpha\}$ be the collection of sets defined by $B_\alpha = A \cup A_\alpha$, for all $\alpha$.
+    Since $A \cap A_\alpha \neq \emptyset$, by hypothesis, Theorem 2.23.3 implies that $B_\alpha$ is a connected subspace of $X$ for all $\alpha$.
+    By construction, $\bigcap B_\alpha \supset A \neq \emptyset$.
+    Thus, by Theorem 2.23.3,
+    %
+    \begin{equation*}
+      \bigcup B_\alpha = \bigcup \left(A \cup A_\alpha\right) = A \cup \left(\bigcup A_\alpha\right)
+    \end{equation*}
+    %
+    is connected.
+  \end{proof}
+\end{solution}
+\newpage
+
+
