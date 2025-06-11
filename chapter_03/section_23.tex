@@ -132,8 +132,88 @@
   \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
     \item
       Given any finite subset $K$ of $J$, let $X_K$ denote the subspace of $X$ consisting of all points $\bx = (x_\alpha)$ such that $x_\alpha = a_\alpha$ for $\alpha \not\in K$.
+      Show that $X_K$ is connected.
   \end{enumerate}
   \begin{proof}
+    By hypothesis, we have that for all $\alpha \in K$, $X_\alpha$ is a connected space.
+    Since $K$ is finite, by Theorem 3.23.6 we have that $\prod_{\alpha\in K} X_\alpha$ is also connected.
+    We will show that $\prod_{\alpha\in K} X_\alpha$ is homeomorphic to the product space $X_K$, thus proving that $X_K$ is connected.
+
+    Consider the map $f: \prod_{\alpha\in K} X_\alpha \rightarrow X_K$ given by the formula
+    %
+    \begin{equation*}
+      \pi_\alpha(f(\bx)) =
+      \begin{cases}
+        x_\alpha  &\text{if } \alpha \in K, \\
+        a_\alpha  &\text{if } \alpha \in J \setminus K,
+      \end{cases}
+    \end{equation*}
+    %
+    where $\pi_\alpha: X_K \rightarrow X_\alpha$ is the projection from $X_K$ onto the $\alpha^{\text{th}}$ component.
+    Let $\bx, \by \in \prod_\alpha X_\alpha$.
+    Then $f(\bx) = f(\by)$ implies that $\pi_\alpha(f(\bx)) = \pi_\alpha(f(\by))$ for all $\alpha \in J$.
+    In particular, for $\alpha \in K$ this implies that $x_\alpha = y_\alpha$.
+    It follows that $\bx = \by$ and, thus, $f$ is injective.
+
+    Now let $\by \in X_K$ and let $\bx \in \prod_{\alpha\in K} X_\alpha$ with $x_\alpha = y_\alpha$ for all $\alpha \in K$.
+    Then for $\alpha \in K$ we have that $\pi_\alpha(f(\bx)) = x_\alpha = y_\alpha$.
+    Furthermore, for $\alpha \in J \setminus K$, $\pi_\alpha(f(\bx)) = a_\alpha = y_\alpha$.
+    It follows that $f(\bx) = \by$ and, thus, $f$ is surjective.
+
+    Note that for each $\alpha \in K$, the function $(\pi_\alpha \circ f): \prod_{\beta\in K} X_\beta \rightarrow X_\alpha, \bx \mapsto x_\alpha$ is merely the projection from $\prod_{\beta\in K} X_\beta$ onto its $\alpha^{\text{th}}$ component and is, thus, continuous.
+    Furthermore, for $\alpha \in J \setminus K$, the function $(\pi_\alpha \circ f): \prod_{\beta\in K} X_\beta \rightarrow X_\alpha, \bx \mapsto a_\alpha$ is constant and, thus, continuous.
+    Since for all $\alpha \in J$, the coordinate functions $\pi_\alpha \circ f$ are continuous, $f$ is continuous by Theorem 2.18.4.
+
+    Consider the function $g: X_K \rightarrow \prod_{\alpha\in K} X_\alpha, \by \mapsto (y_\alpha)_{\alpha\in K}$.
+    Then for any $\by \in X_K$,
+    %
+    \begin{equation*}
+      (f \circ g)(\by) = f((y_\alpha)_{\alpha\in K}) = \by.
+    \end{equation*}
+    %
+    Thus, $g = f\inv$.
+    Since the coordinate functions of $g$ are simply the projections from $\prod_{\alpha\in K} X_\alpha$ onto its $\alpha^{\text{th}}$ component and, thus, continuous, we also have that $g$ is continuous.
+
+    Thus, $f: \prod_{\alpha \in K} X_\alpha \rightarrow X_K$ is a continuous bijection with continuous inverse, \ie, a homeomorphism.
+    It follows immediately that connectivity of $\prod_{\alpha \in K}$ implies connectivity of $X_K$.
+  \end{proof}
+  \bigskip
+
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{1} 
+    \item
+      Show that the union $Y$ of the spaces $X_K$ is connected.
+  \end{enumerate}
+  \begin{proof}
+    Let $K \subset J$ be an arbitrary finite subset.
+    For any $\alpha \in K$, $\pi_\alpha(X_K) = X_\alpha$ which contains $a_\alpha$.
+    Furthermore, for $\alpha \in J \setminus K$, $\pi_\alpha(X_K) = \{a_\alpha\}$.
+    It follows that for any arbitrary choice of $K$ we have that $\ba \in X_K$.
+    Thus, by Theorem 3.23.3,
+    %
+    \begin{equation*}
+    Y = \left(\bigcup_{K \subset J} X_K\right),
+    \end{equation*}
+    %
+    where $K$ is understood to be finite, is connected.
+  \end{proof}
+  \bigskip
+
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{2} 
+    \item
+      Show that $X$ equals the closure of $Y$;
+      conclude that $X$ is connected.
+  \end{enumerate}
+  \begin{proof}
+    Let $\bx \in X$ and let $U = \prod_\alpha U_\alpha$ be a basic open neighborhood of $\bx$.
+    Denote by $K$ the finite set of indices $\alpha$ for which $U_\alpha$ need not be $X_\alpha$.
+    Let $\by \in X_K$ be defined by $y_\alpha = x_\alpha$ for $\alpha \in K$ and $y_\alpha = a_\alpha$ for $\alpha \in J \setminus K$.
+    For $\alpha \in K$, we have that $y_\alpha = x_\alpha \in U_\alpha$ since $U_\alpha$ is a neighborhood of $x_\alpha$, whereas for $\alpha \in J \setminus K$ we trivially have that $y_\alpha = a_\alpha \in X_\alpha = U_\alpha$.
+    Since $X_K \subset Y$, it follows that $\by \in U \cap Y$.
+    Thus, $\bx \in \overline{Y}$ and so $X \subset \overline{Y}$.
+    Since $X$ must also contain $\overline{Y}$, we have that $X = \overline{Y}$.
+    By Theorem 3.23.4, since $Y$ is connected and $Y \subset X \subset \overline{Y}$, we have that $X$ is connected.
   \end{proof}
 \end{solution}
 \newpage
