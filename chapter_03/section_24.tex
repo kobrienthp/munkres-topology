@@ -1,0 +1,128 @@
+\subsection{Connected Subspaces of the Real Line}
+
+\begin{exercise}[ID=3.24.1]
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+      Show that no two of the spaces $(0, 1)$, $(0, 1]$, and $[0, 1]$ are homeomorphic.
+    \item
+      Suppose that there exist imbeddings $f: X \rightarrow Y$ and $g: Y \rightarrow X$.
+      Show by means of an example that $X$ and $Y$ need not be homeomorphic.
+    \item 
+      Show that $\RR^n$ and $\RR$ are not homeomorphic if $n > 1$.
+    \end{enumerate}
+\end{exercise}
+%
+\begin{solution}
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+      Show that no two of the spaces $(0, 1)$, $(0, 1]$, and $[0, 1]$ are homeomorphic.
+  \end{enumerate}
+  %
+  \begin{proof}
+    Suppose by way of contradiction there is a homeomorphism
+    %
+    \begin{equation*}
+      f: (0, 1] \rightarrow (0, 1).
+    \end{equation*}
+    %
+    Then the map
+    %
+    \begin{align*}
+      g: (0, 1) &\rightarrow (0, 1) \setminus f(\{1\}) \\
+              x &\mapsto f(x)
+    \end{align*}
+    %
+    is also a homeomorphism.
+    But since $f(1) \in (0, 1)$ by hypothesis, $(0, 1) \setminus f(\{1\}) = (0, f(1)) \cup (f(1), 1)$ is disconnected.
+    Since $(0, 1)$ is connected, its image under a continuous map must also be connected.
+    This contradicts that $g$, and therefore $f$, are homeomorphisms.
+    Thus, $(0, 1)$ and $(0, 1]$ are not homeomorphic.
+    The proofs for the other spaces follow analogously.
+  \end{proof}
+  \bigskip
+
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{1} 
+    \item
+      Suppose that there exist imbeddings $f: X \rightarrow Y$ and $g: Y \rightarrow X$.
+      Show by means of an example that $X$ and $Y$ need not be homeomorphic.
+  \end{enumerate}
+  \begin{proof}
+    We have seen in part (a) that the spaces $(0, 1)$ and $(0, 1]$ are not homeomorphic.
+    Nevertheless, we can construct imbeddings between them.
+    Consider the map
+    %
+    \begin{align*}
+      f:  (0, 1]  &\rightarrow (0, 1) \\
+                x & \mapsto x / 2.
+    \end{align*}
+    %
+    Then the map $f': (0, 1] \rightarrow (0, 1/2]$ obtained by restricting the range of $f$ to its image set $f((0, 1])$, considered as a subspace of $(0, 1)$ is a homeomorphism.
+    Thus, $f$ is an imbedding of $(0, 1]$ in $(0, 1)$.
+
+    Consider now the map
+    %
+    \begin{equation*}
+      g: (0, 1) \rightarrow (0, 1]
+    \end{equation*}
+    %
+    given by the inclusion function.
+    Then the map $g': (0, 1) \rightarrow (0, 1)$ obtained by restricting the range of $g$ to its image set $g((0, 1))$, considered as a subspace of $(0, 1]$ is just the identity map and, thus, a homeomorphism.
+    Thus, $g$ is an imbedding of $(0, 1)$ in $(0, 1]$.
+  \end{proof}
+  \bigskip
+
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{2} 
+    \item 
+      Show that $\RR^n$ and $\RR$ are not homeomorphic if $n > 1$.
+  \end{enumerate}
+  \begin{proof}
+    Suppose by way of contradiction there is a homeomorphism
+    %
+    \begin{equation*}
+      f: \RR^n \rightarrow \RR
+    \end{equation*}
+    %
+    for some integer $n > 1$.
+    Then the map
+    %
+    \begin{align*}
+      g: \RR^n \setminus \{\mathbf{0}\} &\rightarrow \RR \setminus f(\{\mathbf{0}\}) \\
+                                      x &\mapsto f(x)
+    \end{align*}
+    %
+    is also a homeomorphism.
+    But since $f(\mathbf{0}) \in \RR$ by hypothesis, $\RR \setminus f(\{\mathbf{0}\}) = (-\infty, f(\mathbf{0})) \cup (f(\mathbf{0}), \infty)$ is disconnected.
+    Since we have seen previously that punctured euclidean space $\RR^n \setminus \{\mathbf{0}\}$ is connected for $n > 1$, its image under a continuous map must also be connected.
+    This contradicts that $g$, and therefore $f$, are homeomorphisms.
+    Thus, $\RR^n$ and $\RR$ are not homeomorphic if $n > 1$.
+  \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=3.24.2]
+  Let $f: S^1 \rightarrow \RR$ be a continuous map.
+  Show there exists a point $x$ of $S^1$ such that $f(x) = f(-x)$.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    Let $f: S^1 \rightarrow \RR$ be a continuous map.
+    Then the map
+    %
+    \begin{align*}
+      g: S^1  &\rightarrow \RR \\
+            x &\mapsto f(x) - f(-x)
+    \end{align*}
+    %
+    is also continuous.
+    Assume by way of contradiction that for all $x \in S^1$, $f(x) \neq f(-x)$.
+    Then $g(S^1) \subset \RR \setminus \{0\} = (-\infty, 0) \cup (0, \infty)$, which is disconnected.
+    Since $g(x) = -g(-x)$, it must be that $g(S^1) \cap (-\infty, 0) \neq \emptyset$ and $g(S^1) \cap (0, \infty) \neq \emptyset$.
+    But as $S^1$ is a connected space, this contradicts the fact that the image of $S^1$ under a continuous map is connected and, thus, must lie either entirely within $(-\infty, 0)$ or within $(0, \infty)$.
+    Thus, if $f: S^1 \rightarrow \RR$ is a continuous map, then there exists a point $x$ of $S^1$ such that $f(x) = f(-x)$.
+  \end{proof}
+\end{solution}
+\newpage
+
