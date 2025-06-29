@@ -117,11 +117,46 @@
     \end{align*}
     %
     is also continuous.
+
     Assume by way of contradiction that for all $x \in S^1$, $f(x) \neq f(-x)$.
     Then $g(S^1) \subset \RR \setminus \{0\} = (-\infty, 0) \cup (0, \infty)$, which is disconnected.
     Since $g(x) = -g(-x)$, it must be that $g(S^1) \cap (-\infty, 0) \neq \emptyset$ and $g(S^1) \cap (0, \infty) \neq \emptyset$.
     But as $S^1$ is a connected space, this contradicts the fact that the image of $S^1$ under a continuous map is connected and, thus, must lie either entirely within $(-\infty, 0)$ or within $(0, \infty)$.
     Thus, if $f: S^1 \rightarrow \RR$ is a continuous map, then there exists a point $x$ of $S^1$ such that $f(x) = f(-x)$.
+  \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=3.24.3]
+  Let $f: X \rightarrow X$ be a continuous map.
+  Show that if $X = [0, 1]$, there is a point $x$ such that $f(x) = x$.
+  What happens if $X$ equals $[0, 1)$ or $(0, 1)$?
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    Let $f: [0, 1] \rightarrow [0, 1]$ be a continuous map.
+    Then the map
+    %
+    \begin{align*}
+      g: [0, 1] &\rightarrow [-1, 1] \\
+              x &\mapsto f(x) - x
+    \end{align*}
+    %
+    is also continuous.
+    Since $g(0) = f(0) \geq 0$ and $g(1) = f(1) - 1 \leq 0$, by the intermediate value theorem there exists an $x \in [0, 1]$ satisfying $g(x) = 0$ and, thus, $f(x) = x$.
+
+    We now consider what happens when $X = [0, 1)$ or $X = (0, 1)$.
+    Consider the map
+    %
+    \begin{align*}
+      f: X  &\rightarrow X \\
+         x  &\mapsto \frac{x + 1}{2}.
+    \end{align*}
+    %
+    The only solution to $f(x) = x$ in this case would be $x = 1$.
+    However, $1 \not\in X$ for either case.
+    Thus, for $X = [0, 1)$ or $X = (0, 1)$ a continous map $f: X \rightarrow X$ need not have a fixed point.
   \end{proof}
 \end{solution}
 \newpage
