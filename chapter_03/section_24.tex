@@ -161,3 +161,74 @@
 \end{solution}
 \newpage
 
+\begin{exercise}[ID=3.24.4]
+  Let $X$ be an ordered set in the order toplogy.
+  Show that if $X$ is connected, then $X$ is a linear continuum.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+  \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=3.24.6]
+  Show that if $X$ is a well-ordered set, then $X \times [0, 1)$ in the dictionary order is a linear continuum.
+\end{exercise}
+%
+\begin{solution}
+  \begin{proof}
+    Let $X$ be a well-ordered set and let $A \subset X \times [0, 1)$ be a nonempty subset of $X \times [0, 1)$ in the dictionary order which is bounded above.
+
+    \subsubsection*{The dictionary order satisfies the least upper bound property}
+    %
+    By hypothesis there exists some upper bound $(x, u) \in X \times [0, 1)$ of $A$.
+    It must then be the case that $\pi_1(A) \subset X$ is bounded from above by $x$, where $\pi_1$ is the projection map from $A$ to the first factor.
+    Since $X$ is well-ordered by hypothesis, $\pi_1(A)$ must possess a least upper bound $z \in X$.
+    We consider the two cases $\pi_1\inv(\{z\}) = \emptyset$ and $\pi_1\inv(\{z\}) \neq \emptyset$ and show that in each case there exists a least upper bound for $A$.
+    
+    Suppose $\pi_1\inv(\{z\}) = \emptyset$.
+    Then $(z, 0)$ is an upper bound for $A$.
+    Let $(x, u)$ be some upper bound for $A$.
+    Since $z$ is the least upper bound for $\pi_1(A)$, we have that $z \leq x$.
+    Furthermore, since $0 \leq u$ we have that $(z, 0) \leq (x, u)$ and so $(z, 0)$ is the least upper bound for $A$.
+
+    Suppose instead that $\pi_1\inv(\{z\}) \neq \emptyset$.
+    Then $u$ must bound $\pi_2(\pi_1\inv(\{z\})) \subset [0, 1)$ from above, where $\pi_2$ is the projection map from $A$ to the second factor.
+    Since $[0, 1)$ is a linear continuum it possesses the least upper bound property.
+    It follows that $\pi_2(\pi_1\inv(\{z\}))$ has a least upper bound $w \in [0, 1)$.
+
+    We now show that $(z, w) \in X \times [0, 1)$ is the least upper bound for $A$.
+    Let $(y, v) \in A$.
+    Since $z$ is the least upper bound for $\pi_1(A)$, it must be that $y \leq z$.
+    If $y < z$, then $(y, v) < (z, w)$.
+    If instead $y = z$, we note that since $w$ is the least upper bound for $\pi_2(A)$, it must be that $v \leq w$.
+    Thus, for arbitrary $(y, v) \in X \times [0, 1)$, we see that $(y, v) \leq (z, w)$, from which it follows that $(z, w)$ is an upper bound for $A$.
+
+    Now let $(x, u)$ be an upper bound for $A$.
+    Then for all $(y, v) \in A$, either $y < x$ or $y = x$ and $v \leq u$.
+    Suppose first that $y < x$.
+    Since $z$ is the least upper bound for $\pi_1(A)$, then $z \leq x$.
+    If $z < x$, then $(z, w) < (x, u)$.
+    If instead $z = x$, we note that $w$ is the least upper bound for $\pi_2(A)$ and so $w \leq u$.
+    Thus, $(z, w) \leq (x, u)$.
+    Suppose instead that $y = x$. Since $z$ is the least upper bound for $\pi_1(A)$, then $z = x$.
+    As above, since $w$ is the least upper bound for $\pi_2(A)$, we have that $w \leq u$.
+    Thus, $(z, w) \leq (x, u)$.
+    It follows that $(z, w)$ furnishes a least upper bound for the arbitrary nonempty, bounded from above subset $A$ of $X \times [0, 1)$ in the dictionary order.
+
+    \subsubsection*{If $(x, u) < (y, v)$, there exists $(z, w)$ such that $(x, u) < (z, w) < (y, v)$}
+    %
+    Let $(x, u), (y, v) \in X \times [0, 1)$ with $(x, u) < (y, v)$.
+    Suppose $x < y$.
+    Since $[0, 1)$ is a linear continuum, we can always find $w \in [0, 1)$ such that $u < w$.
+    Choosing $z = x$, we have $(x, u) < (z, w) < (y, v)$.
+
+    Suppose instead that $x = y$ and $u < v$.
+    Again, as $[0, 1)$ is a linear continuum, we can find $w \in [0, 1)$ such that $u < w < v$.
+    Choosing $z = x$, we have $(x, u) < (z, w) < (y, v)$.
+    Thus, we see that $X \times [0, 1)$ in the dictionary order is a linear continuum.
+  \end{proof}
+\end{solution}
+\newpage
+
