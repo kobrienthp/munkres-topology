@@ -162,12 +162,30 @@
 \newpage
 
 \begin{exercise}[ID=3.24.4]
-  Let $X$ be an ordered set in the order toplogy.
+  Let $X$ be an ordered set in the order topology.
   Show that if $X$ is connected, then $X$ is a linear continuum.
 \end{exercise}
 %
 \begin{solution}
   \begin{proof}
+    Let $X$ be an ordered set in the order topology which is connected.
+    Suppose by way of contradiction that $X$ is not a linear continuum.
+    We consider two possibilities.
+
+    Suppose first that $X$ does not satisfy the least upper bound property.
+    Then there exists some nonempty subset $A$ of $X$ which is bounded above but for which there exists no least upper bound in $X$.
+    Let $B = \{ b \in X \mid a \leq b, \forall a \in A \}$ be the set of upper bounds of $A$.
+    Since $A$ has no least upper bound, $B$ does not have a smallest element.
+    Thus, defining open sets
+    %
+    \begin{equation}
+      U = \bigcup_{a \in A} (-\infty, a) \; \text{ and }\; V = \bigcup_{b \in B} (b, \infty),
+    \end{equation}
+    %
+    we have that $X = U \cup V$ is a separation of $X$, contradicting our assumption that $X$ is connected.
+
+    Suppose instead there exist $x, y \in X$ with $x < y$ such that for any $z \in X$, it is not the case that $x < z < y$.
+    Then we have that $X = (-\infty, y) \cup (x, \infty)$ is a separation of $X$, contradicting our assumption that $X$ is connected.
   \end{proof}
 \end{solution}
 \newpage
