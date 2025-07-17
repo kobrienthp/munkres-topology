@@ -237,7 +237,7 @@
 
     \subsubsection*{If $(x, u) < (y, v)$, there exists $(z, w)$ such that $(x, u) < (z, w) < (y, v)$}
     %
-    Let $(x, u), (y, v) \in X \times [0, 1)$ with $(x, u) < (y, v)$.
+    Let $(4x, u), (y, v) \in X \times [0, 1)$ with $(x, u) < (y, v)$.
     Suppose $x < y$.
     Since $[0, 1)$ is a linear continuum, we can always find $w \in [0, 1)$ such that $u < w$.
     Choosing $z = x$, we have $(x, u) < (z, w) < (y, v)$.
@@ -246,6 +246,98 @@
     Again, as $[0, 1)$ is a linear continuum, we can find $w \in [0, 1)$ such that $u < w < v$.
     Choosing $z = x$, we have $(x, u) < (z, w) < (y, v)$.
     Thus, we see that $X \times [0, 1)$ in the dictionary order is a linear continuum.
+  \end{proof}
+\end{solution}
+\newpage
+
+\begin{exercise}[ID=3.24.7]
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+      Let $X$ and $Y$ be ordered sets in the order topology.
+      Show that if $f: X \rightarrow Y$ is order preserving and surjective, then $f$ is a homeomorphism.
+    \item
+      Let $X = Y = \overline{\RR}_+$.
+      Given a positive integer $n$, show that the function $f(x) = x^n$ is order preserving and surjective.
+      Conclude that its inverse, the $n$\textit{th root function}, is continous.
+    \item 
+      Let $X$ be the subspace $(-\infty, -1) \cup [0, \infty)$ of $\RR$.
+      Show that the function $f: X \rightarrow \RR$ defined by setting $f(x) = x + 1$ if $x < -1$, and $f(x) = x$ if $x \geq 0$, is order preserving and surjective.
+      Is $f$ a homeomorphism?
+      Compare with (a).
+    \end{enumerate}
+\end{exercise}
+%
+\begin{solution}
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+      Let $X$ and $Y$ be ordered sets in the order topology.
+      Show that if $f: X \rightarrow Y$ is order preserving and surjective, then $f$ is a homeomorphism.
+  \end{enumerate}
+  \begin{proof}
+    Let $f: X \rightarrow Y$ be order preserving and surjective.
+    We begin by showing that $f$ must be bijective with order preserving inverse.
+    Given $u, v \in X$, if $u \neq v$ then either $u < v$ or $v < u$, since $X$ is an ordered set.
+    Without loss of generality, suppose that $u < v$.
+    Since $f$ is order preserving, we have that $f(u) < f(v)$ so that $f(u) \neq f(v)$.
+    Thus, $f$ injective in addition to being surjective and is, therefore, a bijection.
+
+    Let $a, b \in Y$ and let $u = f\inv(a)$ and $v = f\inv(b)$.
+    Suppose by way of contradiction that $f\inv$ is not order preserving.
+    Since $f$ is bijective, $u = v$ if and only if $a = b$.
+    Suppose that $a < b$ so that $u \neq v$.
+    Since we assume that $f\inv$ is not order preserving, it is possible that $v < u$.
+    As $f$ \textit{is} order preserving, this would imply that $b = f(v) < f(u) = a$, contradicting our assumption that $a < b$.
+    Thus, $f\inv: Y \rightarrow X$ is order preserving.
+
+    We now show that continuity of $f$ follows directly from it being order preserving and bijective.
+    Under the order topology, basic open sets in $Y$ are either of the form (i) open intervals $(a, b)$ in $Y$, (ii) intervals of the form $[a_0, b)$, where $a_0$ is the smallest element (if any) in $Y$, (iii) intervals of the form $(a, b_0]$, where $b_0$ is the largest element (if any) of $Y$.
+    Since $f\inv$ is order preserving, we thus consider sets in $X$ of the form (i) $f\inv((a, b)) = (f\inv(a), f\inv(b))$, (ii) $f\inv([a_0, b)) = [f\inv(a_0), f\inv(b))$, (iii) $f\inv((a, b_0]) = (f\inv(a), f\inv(b_0)]$.
+    As these are nothing more than the basic open sets in $X$ under the order topology, we have that $f$ is continuous.
+
+    Since $f\inv$ is also order preserving and bijective, it must also be continuous.
+    Thus, $f: X \rightarrow Y$ is a homeomorphism.
+  \end{proof}
+  \newline
+
+  %
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{1} 
+    \item
+      Let $X = Y = \overline{\RR}_+$.
+      Given a positive integer $n$, show that the function $f(x) = x^n$ is order preserving and surjective.
+      Conclude that its inverse, the $n$\textit{th root function}, is continous.
+  \end{enumerate}
+  %
+  \begin{proof}~
+
+    \subsubsection*{$x^n$ is order preserving}
+    %
+    Let $x, y \in \overline{\RR}_+$ with $x < y$ and define $\delta = y - x > 0$.
+    Then
+    %
+    \begin{equation*}
+      y^n = (x + \delta)^n \geq x + n \delta
+    \end{equation*}
+    %
+    and, similarly,
+    %
+    \begin{equation*}
+      x^n = (y - \delta)^n \geq y - n \delta.
+    \end{equation*}
+    %
+    Their difference, therefore, satisfies
+    %
+    \begin{equation*}
+      y^n - x^n \geq x - y + 2 n \delta = (2n - 1) \delta \geq \delta > 0.
+    \end{equation*}
+    %
+    It follows that $x^n < y^n$ and, thus, $x^n$ is order preserving.
+    \bigskip
+
+    %
+    \subsubsection*{$x^n$ is surjective}
+    %
+
   \end{proof}
 \end{solution}
 \newpage
