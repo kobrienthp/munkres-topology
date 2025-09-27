@@ -384,6 +384,105 @@
     Thus, $x^n$ is surjective.
     It follows that its inverse, the $n$\textit{th root function}, is continous.
   \end{proof}
+
+  %
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+  %
+    \addtocounter{enumi}{2} 
+    \item 
+      Let $X$ be the subspace $(-\infty, -1) \cup [0, \infty)$ of $\RR$.
+      Show that the function $f: X \rightarrow \RR$ defined by setting $f(x) = x + 1$ if $x < -1$, and $f(x) = x$ if $x \geq 0$, is order preserving and surjective.
+      Is $f$ a homeomorphism?
+      Compare with (a).
+  \end{enumerate}
+  %
+  \begin{proof}~
+
+    \subsection*{$f$ is order preserving}
+    %
+    Let $x, y \in X$ with $x < y$.
+    There are three cases to consider: (i) $x < y < -1$, (ii) $x < -1$, $y \geq 0$, (iii) $0 \leq x < y$.
+
+    (i) Suppose first that $x < y < -1$.
+    Then $f(x) = x + 1$ and $f(y) = y + 1$ implies
+    %
+    \begin{equation}
+      \begin{aligned}
+        f(y) - f(x) &= (y + 1) - (x + 1) \\
+                    &= y - x \\
+                    &> 0.
+      \end{aligned}
+    \end{equation}
+    %
+    (ii) Suppose next that $x < -1$ and $y \geq 0$, so that $y - x > 1$.
+    Then $f(x) = x + 1$ and $f(y) = y$ implies
+    %
+    \begin{equation}
+      \begin{aligned}
+        f(y) - f(x) &= y - (x + 1) \\
+                    &= y - x - 1 \\
+                    &> 0.
+      \end{aligned}
+    \end{equation}
+    %
+    (iii) Finally, suppose that $0 \leq x < y$.
+    Then $f(x) = x$ and $f(y) = y$ implies
+    %
+    \begin{equation}
+      \begin{aligned}
+        f(y) - f(x) &= y - x \\
+                    &> 0.
+      \end{aligned}
+    \end{equation}
+    %
+    Thus, $f: X \rightarrow \RR$ is order preserving.
+
+    %
+    \subsection*{$f$ is surjective}
+    %
+    Let $y \in \RR$.
+    Suppose $y < 0$ and consider $x = y - 1 \in (-\infty, -1)$.
+    Then
+    %
+    \begin{equation}
+      f(x) = x + 1 = (y - 1) + 1 = y.
+    \end{equation}
+    %
+    Suppose instead that $y \geq 0$ and consider $x = y \in [0, \infty)$.
+    Then
+    %
+    \begin{equation}
+      f(x) = x = y.
+    \end{equation}
+    %
+    Thus, $f: X \rightarrow \RR$ is surjective.
+    
+    %
+    \subsection*{$f$ is not a homeomorphism}
+    %
+    As an order preserving function, $f: X \rightarrow \RR$ is injective.
+    Since we have seen that it is also surjective, it possesses an inverse, $f\inv: \RR \rightarrow X$.
+    We show that $f\inv$ is not continuous, thus showing that $f$ is not a homeomorphism.
+
+    Let $0 < \epsilon < 1$.
+    The set $(-\epsilon, \epsilon) \cap X$ is open in $X$ in the subspace topology since $(-\epsilon, \epsilon)$ is open in $\RR$.
+    But
+    %
+    \begin{equation}
+      f\left((-\epsilon, \epsilon) \cap X\right) = f\left([0, \epsilon)\right) = [0, \epsilon),
+    \end{equation}
+    %
+    which is not open in $\RR$.
+    Thus, $f\inv$ is not continuous and $f$ is not a homeomorphism.
+
+    %
+    \subsection*{Comparison with (a)}
+    %
+    As $X$ is not convex in $\RR$, it is not guaranteed that the subspace topology on $X$ coincides with the order topology on $X$.
+    In fact, for $0 < \epsilon < 1$, the set $(-\epsilon, \epsilon) \cap X = [0, \epsilon)$ is open in $X$ in the subpsace topology, but is not open in the order topology on $X$, since $[0, \epsilon)$ cannot be expressed as a union of open intervals in $X$.
+    Thus, $X$ as a subspace of $\RR$ does not carry the order topology and is therefore not covered by (a).
+  \end{proof}
+  %
 \end{solution}
 \newpage
 
