@@ -1,0 +1,57 @@
+\subsection{Compact Spaces}
+
+\begin{exercise}[ID=3.26.1]
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+          Let $\mathcal{T}$ and $\mathcal{T}'$ be two topologies on the set $X$;
+          suppose that $\mathcal{T}' \supset \mathcal{T}$.
+          What does compactness of $X$ under one of these topologies imply about compactness under the other?
+    \item
+          Show that if $X$ is compact Hausdorff under both $\mathcal{T}$ and $\mathcal{T}'$, then either $\mathcal{T}$ and $\mathcal{T}'$ are equal or they are not comparable.
+  \end{enumerate}
+\end{exercise}
+%
+\begin{solution}
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+          Let $\mathcal{T}$ and $\mathcal{T}'$ be two topologies on the set $X$;
+          suppose that $\mathcal{T}' \supset \mathcal{T}$.
+          What does compactness of $X$ under one of these topologies imply about compactness under the other?
+  \end{enumerate}
+  %
+  \noindent\textbf{Claim.} If $X$ is compact under the topology $\mathcal{T}'$, then $X$ is compact under the topology $\mathcal{T}$.
+  The converse does not necessarily hold.
+  \begin{proof}
+    Let $\mathcal{T}$ and $\mathcal{T}'$ be two topologies on the set $X$ with $\mathcal{T}'$ finer than $\mathcal{T}$.
+    Suppose that $X$ is compact under the topology $\mathcal{T}'$.
+    Let $\mathcal{A} \subset \mathcal{T}$ be a covering of $X$ by sets open in the topology $\mathcal{T}$.
+    Since $\mathcal{T} \subset \mathcal{T}'$, the collection $\mathcal{A}$ is likewise a covering of $X$ by sets open in $\mathcal{T}'$.
+    By compactness of $X$ under the topology $\mathcal{T}'$, there exists a finite subset of $\mathcal{A}$ which also covers $X$.
+    Since $\mathcal{A} \subset \mathcal{T}$, such a subset must also be a subset of $\mathcal{T}$ and is, thus, a finite covering of $X$ by sets open in $\mathcal{T}$.
+    It follows that $X$ is compact under the topology $\mathcal{T}$.
+
+    To show that the converse does not necessarily hold, let $X$ be an infinite set, with $\mathcal{T}$ and $\mathcal{T}'$ being the trivial and discrete topologies on $X$, respectively.
+    As every topology contains the trivial topology, we have that $\mathcal{T}'$ is finer than $\mathcal{T}$.
+    Since the only open coverings of $X$ in $\mathcal{T}$ are finite, namely $\{X\}$ and $\{\emptyset, X\}$, it follows that $X$ is compact under the trivial topology $\mathcal{T}$.
+    Consider the covering of $X$ given by
+    %
+    \begin{equation*}
+      \mathcal{A} = \{\{x\} \mid x \in X\}.
+    \end{equation*}
+    %
+    Since all singleton sets are open under the discrete topology, we have that $\mathcal{A}$ is a covering of $X$ by sets open in $\mathcal{T}'$.
+    Clearly, no finite subset of $\mathcal{A}$ could possibly cover $X$, as that would contradict the fact that $X$ is infinite.
+    Thus, $X$ is not compact under the discrete topology $\mathcal{T}'$.
+  \end{proof}
+  \bigskip
+
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{1}
+    \item
+          Show that if $X$ is compact Hausdorff under both $\mathcal{T}$ and $\mathcal{T}'$, then either $\mathcal{T}$ and $\mathcal{T}'$ are equal or they are not comparable.
+  \end{enumerate}
+  \begin{proof}
+    Let $X$ be a set which is compact Hausdorff under two topologies, $\mathcal{T}$ and $\mathcal{T}'$.
+  \end{proof}
+\end{solution}
+\newpage
