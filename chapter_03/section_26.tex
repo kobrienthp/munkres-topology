@@ -39,7 +39,7 @@
       \mathcal{A} = \{\{x\} \mid x \in X\}.
     \end{equation*}
     %
-    Since all singleton sets are open under the discrete topology, we have that $\mathcal{A}$ is a covering of $X$ by sets open in $\mathcal{T}'$.
+    Since all subsets of $X$ are open under the discrete topology, we have that $\mathcal{A}$ is a covering of $X$ by sets open in $\mathcal{T}'$.
     Clearly, no finite subset of $\mathcal{A}$ could possibly cover $X$, as that would contradict the fact that $X$ is infinite.
     Thus, $X$ is not compact under the discrete topology $\mathcal{T}'$.
   \end{proof}
@@ -52,6 +52,90 @@
   \end{enumerate}
   \begin{proof}
     Let $X$ be a set which is compact Hausdorff under two topologies, $\mathcal{T}$ and $\mathcal{T}'$.
+    Suppose that $\mathcal{T} \subset \mathcal{T}'$.
+    It follows that the identity map
+    %
+    \begin{equation}
+      \text{id}: (X, \mathcal{T}') \rightarrow (X, \mathcal{T})
+    \end{equation}
+    %
+    is continuous, since for any open set $U \in \mathcal{T}$, its preimage $\text{id}\inv(U) = U$ is in $\mathcal{T}'$ and, thus, open.
+    Since the identity map in this case is a continuous bijection, $(X, \mathcal{T}')$ is compact and $(X, \mathcal{T})$ is Hausdorff, Theorem 3.26.6 guarantees that it is a homeomorphism.
+    Thus, for any open set $V \in \mathcal{T}'$, its image $\text{id}(V) = V$ is open and, thus, contained in $\mathcal{T}$.
+    It follows that $\mathcal{T}' \subset \mathcal{T}$ and so we have $\mathcal{T} = \mathcal{T}'$.
+
+    Conversely, suppose that $\mathcal{T}' \subset \mathcal{T}$.
+    Since $(X, \mathcal{T})$ is compact and $(X, \mathcal{T}')$ is Hausdorff, by the same argument as above, we have that the identity map
+    %
+    \begin{equation}
+      \text{id}': (X, \mathcal{T}) \rightarrow (X, \mathcal{T}')
+    \end{equation}
+    %
+    is a homeomorphism.
+    It follows that $\mathcal{T}' = \mathcal{T}$.
   \end{proof}
 \end{solution}
 \newpage
+
+\begin{exercise}[ID=3.26.2]
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+          Show that in the finite complement topology on $\RR$, every subspace is compact.
+    \item
+          If $\RR$ has the topology consisting of all sets $A$ such that $\RR \setminus A$ is either countable or all of $\RR$, is $[0, 1]$ a compact subspace?
+  \end{enumerate}
+\end{exercise}
+%
+\begin{solution}
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \item
+          Show that in the finite complement topology on $\RR$, every subspace is compact.
+  \end{enumerate}
+  %
+  \begin{proof}
+    Let $X$ be a subset of $\RR$ and let $\mathcal{A}$ be a collection of open subsets of $\RR$ which cover $X$.
+    Consider a set $A \in \mathcal{A}$.
+    As an open set in the finite complement topology, it must be that $X \setminus A$ contains only a finite number of points, say $n \in \{0\} \cup \ZZ_+$.
+    It follows that we require at most $n + 1$ sets from $\mathcal{A}$ to cover $X$.
+    Thus, by Theorem 3.26.1 we have that $X$ is a compact subspace of $\RR$.
+  \end{proof}
+
+  %
+  \begin{enumerate}[label={(\alph*)}, align=left, leftmargin=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]
+    \addtocounter{enumi}{1}
+    \item
+          If $\RR$ has the topology consisting of all sets $A$ such that $\RR \setminus A$ is either countable or all of $\RR$, is $[0, 1]$ a compact subspace?
+  \end{enumerate}
+  %
+  \noindent\textbf{Claim.} If $\RR$ has the topology consisting of all sets $A$ such that $\RR \setminus A$ is either countable or all of $\RR$, $[0, 1]$ is not a compact subspace.
+  \begin{proof}
+    Consider the real numbers $\RR$ with the topology consisting of all sets $A$ such that $\RR \setminus A$ is either countable or all of $\RR$.
+    Given the collection of sets $\mathcal{A} = \{A_n = \RR \setminus C_n \in \mathcal{P}(\RR) \}_{n \in \ZZ_+}$ with
+    %
+    \begin{equation*}
+      C_n = \{1 / m \mid m \in \ZZ_+ \setminus \{n\}\},
+    \end{equation*}
+    %
+    we will show that $\mathcal{A}$ is a cover of $[0, 1]$ by sets open in $\RR$ for which there is no finite subcover.
+    Since for each $n \in \ZZ_+$, the set $C_n$ contains a countable number of points, we have that $A_n$ is an open set in this topology.
+    Furthermore, for any $x \in [0, 1]$, $x$ is either of the form $x = 1 / n$ for some $n \in \ZZ_+$ or it is not.
+    If it is not, then $x$ is contained in every set $A_n$, since they contain every real number with the exception of those of the form $1 / m$ for $m \in \ZZ_+$.
+    On the other hand, if it is the case that $x = 1 / n$ for some $n \in \ZZ_+$, then $x$ is contained in $A_m$ exactly when $m = n$.
+    Thus, we have that $\mathcal{A}$ furnishes a covering of $[0, 1]$ by sets open in $\RR$.
+
+    Consider now a finite subset $\mathcal{B}$ of $\mathcal{A}$.
+    As a finite set, $\mathcal{B}$ must have some cardinality $k \in \ZZ_+$ and, thus, may be written as
+    %
+    \begin{equation*}
+      \mathcal{B} = \{A_{i_1}, \ldots, A_{i_k}\},
+    \end{equation*}
+    %
+    where the indices are chosen such that $i_1 < \ldots < i_k$.
+    Given some positive integer $n > i_k$, we have that $1 / n$ is not contained in $\bigcup \mathcal{B}$, since $A_n$  is not contained in $\mathcal{B}$.
+    Thus, $\mathcal{B}$ does not cover $[0, 1]$.
+    It follows that no finite subset of $\mathcal{A}$ will cover $[0, 1]$.
+    By Theorem 3.26.1, we have that $[0, 1]$ is not a compact subspace of $\RR$ in this topology.
+  \end{proof}
+\end{solution}
+\newpage
+
