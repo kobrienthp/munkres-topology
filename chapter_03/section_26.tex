@@ -139,3 +139,94 @@
 \end{solution}
 \newpage
 
+\begin{exercise}[ID=3.26.4]
+  Show that any compact subspace of a metric space is bounded in that metric and is closed.
+\end{exercise}
+%<S-Del>
+\begin{solution}
+  \begin{proof}
+    Let $X$ be a metric space with metric $d$.
+    We begin by showing that any compact subspace of $(X, d)$ is bounded.
+    We proceed by proving the contrapositive.
+    Suppose that $U$ is an unbounded subspace of $X$.
+    Fix $\epsilon > 0$ and define the set of $\epsilon$-balls
+    %
+    \begin{equation}
+      \mathcal{A} = \{B_d(x, \epsilon) \mid x \in U\}.
+    \end{equation}
+    %
+    Since for each point $x \in U$, we have that $x \in B_d(x, \epsilon) \in \mathcal{A}$, clearly $\mathcal{A}$ is a covering of $U$ by sets open in $X$.
+    Consider an arbitrary finite subset $\mathcal{B}$ of $\mathcal{A}$, given by
+    %
+    \begin{equation}
+      \mathcal{B} = \{B_d(x_i, \epsilon) \mid x_i \in \{x_1, \ldots, x_n\} \subset U\},
+    \end{equation}
+    %
+    for some $n \in \ZZ_+$.
+    Consider two points $u, v \in \bigcup \mathcal{B}$.
+    By construction, $u$ and $v$ must be contained in $\epsilon$-balls centered at respective points $x_i$ and $x_j$, not necessarily unique, so that $d(u, x_i) < \epsilon$ and $d(v, x_j) < \epsilon$.
+    By repeated application of the triangle inequality, we have
+    %
+    \begin{equation}
+      d(u, v) \leq d(x_i, x_j) + d(u, x_i) + d(v, x_j) < d(x_i, x_j) + 2 \epsilon.
+    \end{equation}
+    %
+    Furthermore, since there are only a finite number of $\epsilon$-balls contained in $\mathcal{B}$, we may define
+    %
+    \begin{equation}
+      M \equiv \max(\{d(x_i, x_j) \mid x_i, x_j \in \{x_1, \ldots, x_n\}\}).
+    \end{equation}
+    %
+    Therefore, $\bigcup \mathcal{B}$ is bounded by $b = M + 2 \epsilon$.
+    Itself being \textit{un}bounded, $U$ cannot be covered by $\mathcal{B}$.
+    Thus, $\mathcal{A}$ furnishes a covering of $U$ by sets open in $X$ for which there exists no finite subset which also covers $U$.
+    By Theorem 3.26.1, we have shown that $U$ is not a compact subspace of $X$.
+
+    Suppose now that $U$ is a compact subspace of $X$.
+    We have just shown that $U$ must be bounded, and so we may define its diameter to be
+    %
+    \begin{equation}
+      b = \sup{\left(\{d(x, y) \mid x, y \in U\}\right)}.
+    \end{equation}
+    %
+    Suppose by way of contradiction that $U$ is not closed.
+    Then by Theorem 2.17.7, $U$ must possess some limit point $x$ which is not contained in $U$.
+
+    Consider the collection of open sets
+    %
+    \begin{equation}
+      \mathcal{A} = \{A_n \in \mathcal{P}(X) \mid A_n = B_d(x, b + 1) \setminus \overline{B_d(x, 1/n)},~ n \in \ZZ_+\}.
+    \end{equation}
+    %
+    We will demonstrate that $\mathcal{A}$ covers $U$, but possesses no finite subcover of $U$, thus, contradicting the assumption that $U$ is compact.
+
+    Given a point $y \in U$, we have that $y \neq x$, from which it follows that there exists some $n \in \ZZ_+$ with
+    %
+    \begin{equation}
+      0 < 1/n < d(x, y).
+    \end{equation}
+    %
+    Furthermore, since $x$ is a limit point of $U$, there must exist some point $z \in U$ with $d(x, z) < 1$ so that
+    %
+    \begin{equation}
+      d(x, y) \leq d(x, z) + d(z, y) < b + 1.
+    \end{equation}
+    %
+    Therefore, we have
+    %
+    \begin{equation}
+      1 / n < d(x, y) < b + 1,
+    \end{equation}
+    %
+    which means that $y \in A_n$ and so $\mathcal{A}$ covers $U$.
+
+    Now let $\mathcal{B} = \{A_{n_1}, \ldots, A_{n_N}\}$ be some finite subset of $\mathcal{A}$ with $n_1 < \ldots < n_N$.
+    Then for any $n \geq n_N$, we have $B_d(x, 1/n)$ is disjoint from $\mathcal{B}$.
+    Since $x$ is a limit point of $U$, there exists some point $y \in B_d(x, 1/n) \cap (U \setminus \{x\})$, for any such $n \geq n_N$.
+    But then $y$ is not contained in $\bigcup \mathcal{B}$ and so $\mathcal{B}$ cannot cover $U$.
+    This contradicts compactness of $U$.
+    Hence, $U$ must be closed.
+  \end{proof}
+\end{solution}
+\newpage
+
